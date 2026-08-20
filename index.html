@@ -212,23 +212,20 @@
     </footer>
   </main>
 
-  <!-- Google Apps Script Form Submission Logic -->
+  <!-- Form Submission Script -->
   <script>
     const form = document.getElementById('rsvpForm');
     const thankYouMsg = document.getElementById('thankYouMsg');
     const submitBtn = document.getElementById('submitBtn');
     
-    // Live Google Apps Script Web App Endpoint
     const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzcCksKC6Ej3k1EYri8M-bFXJzlbCU10X-Rc-AgzqbRT0uPProMT_xt0Y_uTHU7B_FV/exec';
 
     form.addEventListener('submit', function(e) {
       e.preventDefault();
       
-      // Disable button briefly to prevent duplicate clicks
       submitBtn.disabled = true;
       submitBtn.innerText = 'Sending... ⏳';
 
-      // Trigger Confetti
       confetti({
         particleCount: 120,
         spread: 70,
@@ -236,21 +233,13 @@
         colors: ['#fde2e4', '#cddaff', '#fff1e6', '#f0a6ca', '#e3b567']
       });
 
-      // Format payload using URLSearchParams to avoid CORS preflight issues
-      const formData = new URLSearchParams();
-      formData.append('guest_name', form.guest_name.value);
-      formData.append('attendance', form.attendance.value);
-      formData.append('guest_count', form.guest_count.value);
-      formData.append('message', form.message.value);
+      // Construct FormData payload directly from the form inputs
+      const payload = new FormData(form);
 
-      // Execute fetch to Google Apps Script
       fetch(SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: formData.toString()
+        body: payload
       })
       .then(() => {
         form.reset();
@@ -265,10 +254,4 @@
     });
   </script>
 </body>
-</html>        form.classList.add('hidden');
-        thankYouMsg.classList.remove('hidden');
-      } catch (err) {
-        alert("Something went wrong. Please try again!");
-      }
-    });
-  </script>
+</html>
