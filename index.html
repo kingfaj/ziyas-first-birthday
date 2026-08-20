@@ -1,13 +1,233 @@
-<script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ziya is Turning One! 🎉</title>
+  
+  <!-- Playful Baby Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Canvas Confetti Library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Fredoka', 'sans-serif'],
+            sans: ['Quicksand', 'sans-serif'],
+          },
+          colors: {
+            'baby-pink': '#fde2e4',
+            'baby-blue': '#e2ece9',
+            'baby-yellow': '#fff1e6',
+            'pastel-rose': '#f0a6ca',
+            'soft-cream': '#fffbf6',
+            'soft-gold': '#e3b567',
+          },
+        },
+      },
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #fffbf6;
+      background-image: radial-gradient(#fde2e4 2px, transparent 2px);
+      background-size: 24px 24px;
+    }
+  </style>
+</head>
+<body class="text-gray-700 font-sans antialiased pb-12">
+
+  <!-- Bunting Banner SVG Graphic -->
+  <div class="w-full overflow-hidden leading-none opacity-90">
+    <svg class="w-full h-12 md:h-16 text-pastel-rose" viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <polygon points="0,0 60,80 120,0" fill="#fde2e4"/>
+      <polygon points="120,0 180,80 240,0" fill="#cddaff"/>
+      <polygon points="240,0 300,80 360,0" fill="#fff1e6"/>
+      <polygon points="360,0 420,80 480,0" fill="#e2ece9"/>
+      <polygon points="480,0 540,80 600,0" fill="#fde2e4"/>
+      <polygon points="600,0 660,80 720,0" fill="#cddaff"/>
+      <polygon points="720,0 780,80 840,0" fill="#fff1e6"/>
+      <polygon points="840,0 900,80 960,0" fill="#e2ece9"/>
+      <polygon points="960,0 1020,80 1080,0" fill="#fde2e4"/>
+      <polygon points="1080,0 1140,80 1200,0" fill="#cddaff"/>
+    </svg>
+  </div>
+
+  <!-- Header -->
+  <header class="p-4 text-center">
+    <span class="font-display font-bold text-2xl text-rose-400">Ziya’s 1st Birthday 🎈</span>
+  </header>
+
+  <!-- Main Hero Card -->
+  <main class="max-w-2xl mx-auto px-4 mt-2">
+    <div class="bg-white rounded-3xl p-6 md:p-10 shadow-xl shadow-rose-100/50 border-4 border-baby-pink text-center relative overflow-hidden">
+      
+      <!-- Pastel Rainbow & Fairytale Carriage Vector Illustration -->
+      <div class="flex justify-center items-center gap-2 mb-1">
+        <svg class="w-36 h-36" viewBox="0 0 140 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Soft Pastel Rainbow Background -->
+          <path d="M15 90 A 55 55 0 0 1 125 90" stroke="#fde2e4" stroke-width="6" stroke-linecap="round"/>
+          <path d="M27 90 A 43 43 0 0 1 113 90" stroke="#fff1e6" stroke-width="6" stroke-linecap="round"/>
+          <path d="M39 90 A 31 31 0 0 1 101 90" stroke="#e2ece9" stroke-width="6" stroke-linecap="round"/>
+          
+          <!-- Carriage Body -->
+          <circle cx="70" cy="62" r="22" fill="#ffffff" stroke="#f0a6ca" stroke-width="2.5"/>
+          <circle cx="70" cy="62" r="22" fill="#fde2e4" opacity="0.3"/>
+          
+          <!-- Decorative Golden Frame & Trimming -->
+          <circle cx="70" cy="62" r="18" fill="none" stroke="#e3b567" stroke-width="1.5" stroke-dasharray="2 2"/>
+          
+          <!-- Arched Window -->
+          <path d="M63 67 V 58 A 7 7 0 0 1 77 58 V 67 Z" fill="#ffffff" stroke="#e3b567" stroke-width="1.5"/>
+          <line x1="70" y1="51" x2="70" y2="67" stroke="#e3b567" stroke-width="1"/>
+          <line x1="63" y1="60" x2="77" y2="60" stroke="#e3b567" stroke-width="1"/>
+
+          <!-- Crown on Top -->
+          <path d="M64 38 L66 33 L70 36 L74 33 L76 38 Z" fill="#e3b567"/>
+          <circle cx="64" cy="38" r="1" fill="#e3b567"/>
+          <circle cx="70" cy="36" r="1" fill="#e3b567"/>
+          <circle cx="76" cy="38" r="1" fill="#e3b567"/>
+          <rect x="64" y="38" width="12" height="2" fill="#e3b567" rx="1"/>
+
+          <!-- Side Lanterns -->
+          <circle cx="45" cy="58" r="2.5" fill="#fff1e6" stroke="#e3b567" stroke-width="1"/>
+          <line x1="47.5" y1="58" x2="48" y2="58" stroke="#e3b567" stroke-width="1.5"/>
+          <circle cx="95" cy="58" r="2.5" fill="#fff1e6" stroke="#e3b567" stroke-width="1"/>
+          <line x1="92.5" y1="58" x2="92" y2="58" stroke="#e3b567" stroke-width="1.5"/>
+
+          <!-- Carriage Steps/Base -->
+          <path d="M60 84 H80" stroke="#e3b567" stroke-width="2" stroke-linecap="round"/>
+
+          <!-- Front & Back Wheels -->
+          <circle cx="46" cy="85" r="10" fill="#ffffff" stroke="#e3b567" stroke-width="2"/>
+          <circle cx="46" cy="85" r="2" fill="#e3b567"/>
+          <line x1="46" y1="75" x2="46" y2="95" stroke="#e3b567" stroke-width="1"/>
+          <line x1="36" y1="85" x2="56" y2="85" stroke="#e3b567" stroke-width="1"/>
+
+          <circle cx="94" cy="85" r="10" fill="#ffffff" stroke="#e3b567" stroke-width="2"/>
+          <circle cx="94" cy="85" r="2" fill="#e3b567"/>
+          <line x1="94" y1="75" x2="94" y2="95" stroke="#e3b567" stroke-width="1"/>
+          <line x1="84" y1="85" x2="104" y2="85" stroke="#e3b567" stroke-width="1"/>
+
+          <!-- Scrollwork Connectors -->
+          <path d="M56 85 C 60 85, 62 76, 50 62" stroke="#e3b567" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+          <path d="M84 85 C 80 85, 78 76, 90 62" stroke="#e3b567" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+        </svg>
+      </div>
+
+      <span class="inline-block bg-baby-yellow text-amber-700 font-display font-semibold text-sm px-4 py-1.5 rounded-full mb-3">
+        Royal ONE-derland Celebration 👑
+      </span>
+
+      <h1 class="font-display text-4xl md:text-5xl font-bold text-rose-400 leading-tight">
+        Our Little Princess is Turning ONE!
+      </h1>
+
+      <p class="text-gray-600 font-medium text-base md:text-lg mt-3 max-w-md mx-auto">
+        One year of sweet smiles, tiny steps, and big giggles. Join us as we celebrate Ziya’s special first milestone!
+      </p>
+
+      <!-- Event Info Pills -->
+      <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
+        <!-- Date & Time -->
+        <div class="bg-baby-pink/40 p-5 rounded-2xl border border-rose-100 flex items-start gap-4">
+          <div class="p-3 bg-white rounded-xl shadow-sm text-2xl">📅</div>
+          <div>
+            <h3 class="font-display font-bold text-rose-500 text-lg">When</h3>
+            <p class="font-semibold text-gray-800">Saturday, Aug 29, 2026</p>
+            <p class="text-sm text-gray-500">4:00 PM Onwards</p>
+            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Ziya%27s+1st+Birthday+Party&dates=20260829T230000Z/20260830T020000Z&details=Join+us+in+celebrating+Ziya%27s+first+birthday!&location=704+Spring+St,+Seattle,+WA+98104" target="_blank" class="inline-block mt-2 text-xs font-bold text-rose-500 underline">Add to Calendar →</a>
+          </div>
+        </div>
+
+        <!-- Location -->
+        <div class="bg-baby-blue/50 p-5 rounded-2xl border border-teal-100 flex items-start gap-4">
+          <div class="p-3 bg-white rounded-xl shadow-sm text-2xl">📍</div>
+          <div>
+            <h3 class="font-display font-bold text-teal-600 text-lg">Where</h3>
+            <p class="font-semibold text-gray-800">704 Spring St</p>
+            <p class="text-sm text-gray-500">Seattle, WA 98104</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=704+Spring+St+Seattle+WA+98104" target="_blank" class="inline-block mt-2 text-xs font-bold text-teal-600 underline">Get Directions →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RSVP Section -->
+    <section id="rsvp" class="mt-8 bg-white rounded-3xl p-6 md:p-8 shadow-xl shadow-rose-100/50 border-4 border-baby-yellow">
+      <div class="text-center mb-6">
+        <h2 class="font-display text-3xl font-bold text-amber-500">Kindly RSVP</h2>
+        <p class="text-sm text-gray-500 mt-1">Please let us know if you can join the fun!</p>
+      </div>
+
+      <form id="rsvpForm" class="space-y-4 text-left">
+        <div>
+          <label class="block font-display font-semibold text-sm text-gray-700">Your Full Name</label>
+          <input type="text" name="guest_name" class="w-full mt-1 p-3 border-2 border-gray-100 rounded-2xl focus:border-rose-300 outline-none font-medium" required placeholder="Aunt Sarah">
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block font-display font-semibold text-sm text-gray-700">Will you attend?</label>
+            <select name="attendance" class="w-full mt-1 p-3 border-2 border-gray-100 rounded-2xl focus:border-rose-300 outline-none font-medium bg-white">
+              <option value="attending">Joyfully Accept 🎉</option>
+              <option value="declining">Regretfully Decline 💔</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-display font-semibold text-sm text-gray-700">Total Guests</label>
+            <input type="number" name="guest_count" min="1" max="10" value="1" class="w-full mt-1 p-3 border-2 border-gray-100 rounded-2xl focus:border-rose-300 outline-none font-medium">
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-display font-semibold text-sm text-gray-700">Wish for Ziya (Optional)</label>
+          <textarea name="message" rows="3" class="w-full mt-1 p-3 border-2 border-gray-100 rounded-2xl focus:border-rose-300 outline-none font-medium" placeholder="Can't wait to see the birthday girl!"></textarea>
+        </div>
+
+        <button type="submit" id="submitBtn" class="w-full bg-rose-400 hover:bg-rose-500 text-white font-display font-bold text-lg py-3.5 rounded-2xl transition shadow-md shadow-rose-200">
+          Send Response ✨
+        </button>
+      </form>
+
+      <div id="thankYouMsg" class="hidden text-center p-6 bg-emerald-50 border-2 border-emerald-200 text-emerald-800 font-display font-bold text-xl rounded-2xl">
+        🎉 Yay! Your RSVP has been sent. See you at the party!
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-8 text-center font-display font-medium text-sm text-rose-300">
+      Made with 💕 for Ziya's 1st Birthday
+    </footer>
+  </main>
+
+  <!-- Google Apps Script Form Submission Logic -->
+  <script>
     const form = document.getElementById('rsvpForm');
     const thankYouMsg = document.getElementById('thankYouMsg');
+    const submitBtn = document.getElementById('submitBtn');
     
-    // Paste your Web App URL here
+    // Live Google Apps Script Web App Endpoint
     const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzcCksKC6Ej3k1EYri8M-bFXJzlbCU10X-Rc-AgzqbRT0uPProMT_xt0Y_uTHU7B_FV/exec';
 
-    form.addEventListener('submit', async function(e) {
+    form.addEventListener('submit', function(e) {
       e.preventDefault();
       
+      // Disable button briefly to prevent duplicate clicks
+      submitBtn.disabled = true;
+      submitBtn.innerText = 'Sending... ⏳';
+
       // Trigger Confetti
       confetti({
         particleCount: 120,
@@ -16,25 +236,36 @@
         colors: ['#fde2e4', '#cddaff', '#fff1e6', '#f0a6ca', '#e3b567']
       });
 
-      // Format form data as JSON
-      const data = {
-        guest_name: form.guest_name.value,
-        attendance: form.attendance.value,
-        guest_count: form.guest_count.value,
-        message: form.message.value
-      };
+      // Format payload using URLSearchParams to avoid CORS preflight issues
+      const formData = new URLSearchParams();
+      formData.append('guest_name', form.guest_name.value);
+      formData.append('attendance', form.attendance.value);
+      formData.append('guest_count', form.guest_count.value);
+      formData.append('message', form.message.value);
 
-      try {
-        const response = await fetch(SCRIPT_URL, {
-          method: 'POST',
-          mode: 'no-cors', // Bypasses CORS restriction for Apps Script
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        });
-
-        // Show thank you message
+      // Execute fetch to Google Apps Script
+      fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: formData.toString()
+      })
+      .then(() => {
         form.reset();
         form.classList.add('hidden');
+        thankYouMsg.classList.remove('hidden');
+      })
+      .catch(err => {
+        alert("Something went wrong with the submission. Please try again!");
+        submitBtn.disabled = false;
+        submitBtn.innerText = 'Send Response ✨';
+      });
+    });
+  </script>
+</body>
+</html>        form.classList.add('hidden');
         thankYouMsg.classList.remove('hidden');
       } catch (err) {
         alert("Something went wrong. Please try again!");
