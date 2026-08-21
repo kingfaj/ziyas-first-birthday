@@ -1,343 +1,335 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ziya is Turning One! 🎉</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ziya is Turning One! 🥳🎉</title>
 
-<!-- Open Graph Meta Tags for WhatsApp & Social Media Previews -->
-<meta property="og:title" content="Ziya is Turning ONE! 🎉">
-<meta property="og:description" content="One year of sweet smiles and tiny steps. Join us on Saturday, Aug 29, 2026 to celebrate Ziya's 1st Birthday. Click to RSVP.">
-<meta property="og:image" content="https://raw.githubusercontent.com/kingfaj/ziyas-first-birthday/main/zbd.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:type" content="website">
+  <!-- Open Graph Meta Tags for WhatsApp & Social Media Previews -->
+  <meta property="og:title" content="Ziya is Turning ONE! 🥳🎉">
+  <meta property="og:description" content="Join us for a colorful birthday celebration with balloons, music & fun! Saturday, Aug 29, 2026. Click to RSVP.">
+  <meta property="og:image" content="https://raw.githubusercontent.com/kingfaj/ziyas-first-birthday/main/zbd.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:type" content="website">
 
-<!-- Playful Baby Google Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Playful Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
 
-<!-- Tailwind CSS -->
-<script src="https://cdn.tailwindcss.com"></script>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Canvas Confetti Library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
-<!-- Canvas Confetti Library -->
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Fredoka', 'sans-serif'],
+            sans: ['Quicksand', 'sans-serif'],
+          },
+          colors: {
+            'party-pink': '#ff4d8d',
+            'party-yellow': '#ffbe0b',
+            'party-blue': '#00b4d8',
+            'party-purple': '#8338ec',
+            'party-orange': '#fb5607',
+            'party-green': '#06d6a0',
+          },
+        },
+      },
+    }
+  </script>
 
-<script>
-tailwind.config = {
-theme: {
-extend: {
-fontFamily: {
-display: ['Fredoka', 'sans-serif'],
-sans: ['Quicksand', 'sans-serif'],
-},
-colors: {
-'baby-pink': '#fde2e4',
-'baby-blue': '#e2ece9',
-'baby-yellow': '#fff1e6',
-'pastel-rose': '#f0a6ca',
-'soft-cream': '#fffbf6',
-'soft-gold': '#e3b567',
-},
-},
-},
-}
-</script>
+  <style>
+    body {
+      background-color: #fefce8;
+      /* Confetti & Dots background pattern */
+      background-image: 
+        radial-gradient(#ff4d8d 3px, transparent 3px),
+        radial-gradient(#00b4d8 3px, transparent 3px),
+        radial-gradient(#ffbe0b 3px, transparent 3px);
+      background-size: 36px 36px, 48px 48px, 60px 60px;
+      background-position: 0 0, 18px 18px, 30px 30px;
+    }
 
-<style>
-body {
-background-color: #fffbf6;
-background-image: radial-gradient(#fde2e4 2px, transparent 2px);
-background-size: 24px 24px;
-}
+    /* Animation Keyframes */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(3deg); }
+    }
 
-/* Animation Keyframes */
-@keyframes float {
-0%, 100% { transform: translateY(0px) rotate(0deg); }
-50% { transform: translateY(-8px) rotate(2deg); }
-}
+    @keyframes pulseSparkle {
+      0%, 100% { opacity: 0.3; transform: scale(0.8); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
 
-@keyframes pulseSparkle {
-0%, 100% { opacity: 0.3; transform: scale(0.8); }
-50% { opacity: 1; transform: scale(1.2); }
-}
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px) scale(0.97);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
 
-@keyframes fadeInUp {
-from {
-opacity: 0;
-transform: translateY(24px) scale(0.97);
-}
-to {
-opacity: 1;
-transform: translateY(0) scale(1);
-}
-}
+    @keyframes popIn {
+      0% { opacity: 0; transform: scale(0.8); }
+      70% { transform: scale(1.05); }
+      100% { opacity: 1; transform: scale(1); }
+    }
 
-@keyframes popIn {
-0% { opacity: 0; transform: scale(0.8); }
-70% { transform: scale(1.05); }
-100% { opacity: 1; transform: scale(1); }
-}
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
 
-@keyframes shimmer {
-0% { background-position: -200% 0; }
-100% { background-position: 200% 0; }
-}
+    .animate-hero {
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
 
-.animate-hero {
-animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
+    .animate-float-slow {
+      animation: float 3.5s ease-in-out infinite;
+    }
 
-.animate-float-slow {
-animation: float 4s ease-in-out infinite;
-}
+    .animate-float-fast {
+      animation: float 2.2s ease-in-out infinite 0.5s;
+    }
 
-.animate-float-fast {
-animation: float 2.8s ease-in-out infinite 1s;
-}
+    .animate-sparkle {
+      animation: pulseSparkle 1.8s ease-in-out infinite;
+    }
 
-.animate-sparkle {
-animation: pulseSparkle 2.2s ease-in-out infinite;
-}
+    .animate-pop {
+      animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
 
-.animate-pop {
-animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-}
-
-/* Shimmer Overlay for Badge & Cards */
-.shimmer-effect {
-background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0) 100%);
-background-size: 200% 100%;
-animation: shimmer 3.5s infinite;
-}
-</style>
+    .shimmer-effect {
+      background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0) 100%);
+      background-size: 200% 100%;
+      animation: shimmer 3s infinite;
+    }
+  </style>
 </head>
-<body class="text-gray-700 font-sans antialiased pb-12 relative overflow-x-hidden">
+<body class="text-gray-800 font-sans antialiased pb-12 relative overflow-x-hidden">
 
-<!-- Floating Sparkles & Party Accents Background Overlay -->
-<div class="fixed inset-0 pointer-events-none z-0">
-<div class="absolute top-12 left-8 text-2xl animate-sparkle">✨</div>
-<div class="absolute top-24 right-12 text-3xl animate-float-slow opacity-80">🎈</div>
-<div class="absolute top-1/3 left-6 text-xl animate-float-fast opacity-70">⭐</div>
-<div class="absolute top-1/2 right-8 text-2xl animate-sparkle" style="animation-delay: 1s;">✨</div>
-<div class="absolute bottom-1/4 left-10 text-2xl animate-float-slow">🎀</div>
-<div class="absolute bottom-12 right-10 text-xl animate-sparkle" style="animation-delay: 1.5s;">⭐</div>
-</div>
+  <!-- Floating Colorful Party Elements in Background -->
+  <div class="fixed inset-0 pointer-events-none z-0">
+    <div class="absolute top-10 left-6 text-3xl animate-sparkle">✨</div>
+    <div class="absolute top-20 right-10 text-4xl animate-float-slow">🎈</div>
+    <div class="absolute top-1/3 left-4 text-3xl animate-float-fast">🎉</div>
+    <div class="absolute top-1/2 right-6 text-3xl animate-sparkle" style="animation-delay: 0.8s;">⭐</div>
+    <div class="absolute bottom-1/4 left-8 text-4xl animate-float-slow">🎁</div>
+    <div class="absolute bottom-10 right-8 text-3xl animate-sparkle" style="animation-delay: 1.2s;">✨</div>
+  </div>
 
-<!-- Bunting Banner SVG Graphic -->
-<div class="w-full overflow-hidden leading-none opacity-90 relative z-10">
-<svg class="w-full h-12 md:h-16 text-pastel-rose" viewBox="0 0 1200 120" preserveAspectRatio="none">
-<polygon points="0,0 60,80 120,0" fill="#fde2e4"/>
-<polygon points="120,0 180,80 240,0" fill="#cddaff"/>
-<polygon points="240,0 300,80 360,0" fill="#fff1e6"/>
-<polygon points="360,0 420,80 480,0" fill="#e2ece9"/>
-<polygon points="480,0 540,80 600,0" fill="#fde2e4"/>
-<polygon points="600,0 660,80 720,0" fill="#cddaff"/>
-<polygon points="720,0 780,80 840,0" fill="#fff1e6"/>
-<polygon points="840,0 900,80 960,0" fill="#e2ece9"/>
-<polygon points="960,0 1020,80 1080,0" fill="#fde2e4"/>
-<polygon points="1080,0 1140,80 1200,0" fill="#cddaff"/>
-</svg>
-</div>
+  <!-- Colorful Crepe Paper Banner Top SVG -->
+  <div class="w-full overflow-hidden leading-none opacity-95 relative z-10">
+    <svg class="w-full h-14 md:h-20 text-party-pink" viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <polygon points="0,0 60,95 120,0" fill="#ff4d8d"/>
+      <polygon points="120,0 180,95 240,0" fill="#ffbe0b"/>
+      <polygon points="240,0 300,95 360,0" fill="#00b4d8"/>
+      <polygon points="360,0 420,95 480,0" fill="#06d6a0"/>
+      <polygon points="480,0 540,95 600,0" fill="#8338ec"/>
+      <polygon points="600,0 660,95 720,0" fill="#fb5607"/>
+      <polygon points="720,0 780,95 840,0" fill="#ff4d8d"/>
+      <polygon points="840,0 900,95 960,0" fill="#ffbe0b"/>
+      <polygon points="960,0 1020,95 1080,0" fill="#00b4d8"/>
+      <polygon points="1080,0 1140,95 1200,0" fill="#06d6a0"/>
+    </svg>
+  </div>
 
-<!-- Header -->
-<header class="p-4 text-center relative z-10">
-<span class="font-display font-bold text-2xl text-rose-400 inline-flex items-center gap-2">
-<span class="animate-float-fast">🎉</span> Ziya’s 1st Birthday <span class="animate-float-slow">🎈</span>
-</span>
-</header>
+  <!-- Header -->
+  <header class="p-3 text-center relative z-10">
+    <span class="font-display font-bold text-2xl md:text-3xl text-party-purple inline-flex items-center gap-2">
+      <span class="animate-float-fast">🥳</span> Ziya’s 1st Birthday <span class="animate-float-slow">🎉</span>
+    </span>
+  </header>
 
-<!-- Main Hero Card -->
-<main class="max-w-2xl mx-auto px-4 mt-2 relative z-10">
-<div class="animate-hero bg-white rounded-3xl p-6 md:p-10 shadow-2xl shadow-rose-100/70 border-4 border-baby-pink text-center relative overflow-hidden">
+  <!-- Main Hero Card -->
+  <main class="max-w-2xl mx-auto px-4 mt-2 relative z-10">
+    <div class="animate-hero bg-white rounded-3xl p-6 md:p-10 shadow-2xl shadow-yellow-200/80 border-4 border-party-yellow text-center relative overflow-hidden">
 
-<!-- Overlay Sparkles inside Main Card -->
-<div class="absolute top-4 left-6 text-xl animate-sparkle opacity-80 pointer-events-none">✨</div>
-<div class="absolute top-6 right-6 text-xl animate-sparkle pointer-events-none" style="animation-delay: 0.8s;">⭐</div>
+      <!-- Overlay Sparkles inside Main Card -->
+      <div class="absolute top-4 left-6 text-2xl animate-sparkle pointer-events-none">✨</div>
+      <div class="absolute top-6 right-6 text-2xl animate-sparkle pointer-events-none" style="animation-delay: 0.8s;">🎉</div>
 
-<!-- Carriage Vector Illustration -->
-<div class="flex justify-center items-center gap-2 mb-1 relative">
-<div class="absolute text-xl -top-2 left-1/4 animate-sparkle">✨</div>
-<div class="absolute text-xl top-0 right-1/4 animate-sparkle" style="animation-delay: 0.7s;">✨</div>
+      <!-- Colorful Balloons & Crepe Ribbon Banner Graphic -->
+      <div class="flex justify-center items-center mb-2 relative">
+        <svg class="w-44 h-40 animate-float-slow" viewBox="0 0 160 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Twisty Crepe Streamers / Ribbons Background -->
+          <path d="M 20 120 Q 30 90 20 60 Q 10 30 25 10" stroke="#ff4d8d" stroke-width="4" stroke-linecap="round" fill="none"/>
+          <path d="M 140 120 Q 130 90 140 60 Q 150 30 135 10" stroke="#00b4d8" stroke-width="4" stroke-linecap="round" fill="none"/>
+          <path d="M 35 130 Q 45 100 35 70" stroke="#ffbe0b" stroke-width="3" stroke-linecap="round" stroke-dasharray="4 4" fill="none"/>
+          <path d="M 125 130 Q 115 100 125 70" stroke="#06d6a0" stroke-width="3" stroke-linecap="round" stroke-dasharray="4 4" fill="none"/>
 
-<svg class="w-36 h-36 animate-float-slow" viewBox="0 0 140 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-<!-- Soft Pastel Rainbow Background -->
-<path d="M15 90 A 55 55 0 0 1 125 90" stroke="#fde2e4" stroke-width="6" stroke-linecap="round"/>
-<path d="M27 90 A 43 43 0 0 1 113 90" stroke="#fff1e6" stroke-width="6" stroke-linecap="round"/>
-<path d="M39 90 A 31 31 0 0 1 101 90" stroke="#e2ece9" stroke-width="6" stroke-linecap="round"/>
+          <!-- Balloon Strings -->
+          <path d="M80 85 Q 75 110 70 135" stroke="#cbd5e1" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <path d="M52 75 Q 60 105 65 135" stroke="#cbd5e1" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <path d="M108 75 Q 100 105 95 135" stroke="#cbd5e1" stroke-width="2" stroke-linecap="round" fill="none"/>
 
-<!-- Carriage Body -->
-<circle cx="70" cy="62" r="22" fill="#ffffff" stroke="#f0a6ca" stroke-width="2.5"/>
-<circle cx="70" cy="62" r="22" fill="#fde2e4" opacity="0.3"/>
+          <!-- Left Balloon (Cyan) -->
+          <ellipse cx="50" cy="52" rx="22" ry="27" fill="#00b4d8"/>
+          <ellipse cx="44" cy="42" rx="6" ry="10" fill="#ffffff" opacity="0.4"/>
+          <polygon points="50,79 46,84 54,84" fill="#00b4d8"/>
 
-<!-- Decorative Frame & Trimming -->
-<circle cx="70" cy="62" r="18" fill="none" stroke="#e3b567" stroke-width="1.5" stroke-dasharray="2 2"/>
+          <!-- Right Balloon (Purple) -->
+          <ellipse cx="110" cy="52" rx="22" ry="27" fill="#8338ec"/>
+          <ellipse cx="104" cy="42" rx="6" ry="10" fill="#ffffff" opacity="0.4"/>
+          <polygon points="110,79 106,84 114,84" fill="#8338ec"/>
 
-<!-- Arched Window -->
-<path d="M63 67 V 58 A 7 7 0 0 1 77 58 V 67 Z" fill="#ffffff" stroke="#e3b567" stroke-width="1.5"/>
-<line x1="70" y1="51" x2="70" y2="67" stroke="#e3b567" stroke-width="1"/>
-<line x1="63" y1="60" x2="77" y2="60" stroke="#e3b567" stroke-width="1"/>
+          <!-- Center Main Balloon (Bright Pink) -->
+          <ellipse cx="80" cy="42" rx="27" ry="33" fill="#ff4d8d"/>
+          <ellipse cx="72" cy="30" rx="8" ry="12" fill="#ffffff" opacity="0.45"/>
+          <polygon points="80,75 75,81 85,81" fill="#ff4d8d"/>
 
-<!-- Top Decorative Bow Accent -->
-<circle cx="70" cy="36" r="2" fill="#e3b567"/>
-<path d="M64 36 Q 67 33 70 36 Q 73 33 76 36 Q 73 39 70 36 Q 67 39 64 36 Z" fill="#f0a6ca" stroke="#e3b567" stroke-width="1"/>
+          <!-- Confetti Dots & Stars Scatter -->
+          <circle cx="30" cy="25" r="4" fill="#ffbe0b"/>
+          <circle cx="130" cy="25" r="4" fill="#ff4d8d"/>
+          <circle cx="80" cy="110" r="3" fill="#06d6a0"/>
+          <path d="M 40 90 L 43 96 L 50 96 L 45 100 L 47 106 L 40 102 L 33 106 L 35 100 L 30 96 L 37 96 Z" fill="#ffbe0b"/>
+          <path d="M 120 90 L 123 96 L 130 96 L 125 100 L 127 106 L 120 102 L 113 106 L 115 100 L 110 96 L 117 96 Z" fill="#06d6a0"/>
+        </svg>
+      </div>
 
-<!-- Side Lanterns -->
-<circle cx="45" cy="58" r="2.5" fill="#fff1e6" stroke="#e3b567" stroke-width="1"/>
-<line x1="47.5" y1="58" x2="48" y2="58" stroke="#e3b567" stroke-width="1.5"/>
-<circle cx="95" cy="58" r="2.5" fill="#fff1e6" stroke="#e3b567" stroke-width="1"/>
-<line x1="92.5" y1="58" x2="92" y2="58" stroke="#e3b567" stroke-width="1.5"/>
+      <!-- Vibrant Badge -->
+      <span class="inline-block relative overflow-hidden bg-gradient-to-r from-party-yellow via-party-orange to-party-pink text-white font-display font-bold text-sm md:text-base px-5 py-2 rounded-full mb-3 shadow-md animate-float-fast">
+        🎈 Colorful Confetti & Balloon Bash! 🎉
+        <span class="absolute inset-0 shimmer-effect pointer-events-none"></span>
+      </span>
 
-<!-- Carriage Steps/Base -->
-<path d="M60 84 H80" stroke="#e3b567" stroke-width="2" stroke-linecap="round"/>
+      <!-- Main Headline -->
+      <h1 class="font-display text-4xl md:text-6xl font-bold text-party-pink leading-tight">
+        Ziya is Turning ONE!
+      </h1>
 
-<!-- Front & Back Wheels -->
-<circle cx="46" cy="85" r="10" fill="#ffffff" stroke="#e3b567" stroke-width="2"/>
-<circle cx="46" cy="85" r="2" fill="#e3b567"/>
-<line x1="46" y1="75" x2="46" y2="95" stroke="#e3b567" stroke-width="1"/>
-<line x1="36" y1="85" x2="56" y2="85" stroke="#e3b567" stroke-width="1"/>
+      <p class="text-gray-700 font-semibold text-base md:text-xl mt-3 max-w-md mx-auto">
+        Join us for a bright, fun & colorful party as we celebrate Ziya’s big 1st birthday! 🥳
+      </p>
 
-<circle cx="94" cy="85" r="10" fill="#ffffff" stroke="#e3b567" stroke-width="2"/>
-<circle cx="94" cy="85" r="2" fill="#e3b567"/>
-<line x1="94" y1="75" x2="94" y2="95" stroke="#e3b567" stroke-width="1"/>
-<line x1="84" y1="85" x2="104" y2="85" stroke="#e3b567" stroke-width="1"/>
+      <!-- Event Info Pills -->
+      <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
+        <!-- Date & Time -->
+        <div class="bg-amber-50 p-5 rounded-2xl border-2 border-party-yellow flex items-start gap-4 transition hover:scale-[1.02] hover:shadow-md">
+          <div class="p-3 bg-party-yellow text-white rounded-xl shadow-sm text-2xl animate-float-slow">📅</div>
+          <div>
+            <h3 class="font-display font-bold text-party-orange text-lg">When</h3>
+            <p class="font-bold text-gray-800">Saturday, Aug 29, 2026</p>
+            <p class="text-sm font-semibold text-gray-600">4:00 PM Onwards</p>
+            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Ziya%27s+1st+Birthday+Party&dates=20260829T230000Z/20260830T020000Z&details=Join+us+in+celebrating+Ziya%27s+first+birthday!&location=704+Spring+St,+Seattle,+WA+98104" target="_blank" class="inline-block mt-2 text-xs font-bold text-party-orange underline hover:text-orange-600">Add to Calendar →</a>
+          </div>
+        </div>
 
-<!-- Scrollwork Connectors -->
-<path d="M56 85 C 60 85, 62 76, 50 62" stroke="#e3b567" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-<path d="M84 85 C 80 85, 78 76, 90 62" stroke="#e3b567" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-</svg>
-</div>
+        <!-- Location -->
+        <div class="bg-cyan-50 p-5 rounded-2xl border-2 border-party-blue flex items-start gap-4 transition hover:scale-[1.02] hover:shadow-md">
+          <div class="p-3 bg-party-blue text-white rounded-xl shadow-sm text-2xl animate-float-fast">📍</div>
+          <div>
+            <h3 class="font-display font-bold text-party-blue text-lg">Where</h3>
+            <p class="font-bold text-gray-800">704 Spring St</p>
+            <p class="text-sm font-semibold text-gray-600">Seattle, WA 98104</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=704+Spring+St+Seattle+WA+98104" target="_blank" class="inline-block mt-2 text-xs font-bold text-party-blue underline hover:text-cyan-700">Get Directions →</a>
+          </div>
+        </div>
+      </div>
 
-<span class="inline-block relative overflow-hidden bg-baby-yellow text-amber-700 font-display font-semibold text-sm px-4 py-1.5 rounded-full mb-3 border border-soft-gold/30 shadow-sm animate-float-fast">
-First Birthday Celebration 🎈✨
-<span class="absolute inset-0 shimmer-effect pointer-events-none"></span>
-</span>
+    </div>
 
-<h1 class="font-display text-4xl md:text-5xl font-bold text-rose-400 leading-tight">
-Ziya is Turning ONE!
-</h1>
+    <!-- RSVP Section -->
+    <section id="rsvp" class="mt-8 bg-white rounded-3xl p-6 md:p-8 shadow-xl shadow-pink-100/80 border-4 border-party-pink relative overflow-hidden">
+      <div class="text-center mb-6">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-party-purple inline-flex items-center gap-2">
+          <span class="animate-float-slow">🎈</span> Kindly RSVP <span class="animate-sparkle">✨</span>
+        </h2>
+        <p class="text-sm font-semibold text-gray-500 mt-1">Please let us know if you can join the fun!</p>
+      </div>
 
-<p class="text-gray-600 font-medium text-base md:text-lg mt-3 max-w-md mx-auto">
-One year of sweet smiles, tiny steps, and big giggles. Join us as we celebrate Ziya’s special first milestone!
-</p>
+      <form id="rsvpForm" class="space-y-4 text-left">
+        <div>
+          <label class="block font-display font-bold text-sm text-gray-700">Your Full Name</label>
+          <input type="text" name="guest_name" class="w-full mt-1 p-3.5 border-2 border-gray-200 rounded-2xl focus:border-party-pink outline-none font-semibold transition focus:ring-2 focus:ring-pink-100" required placeholder="Aunt Sarah">
+        </div>
 
-<!-- Event Info Pills -->
-<div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
-<!-- Date & Time -->
-<div class="bg-baby-pink/40 p-5 rounded-2xl border border-rose-100 flex items-start gap-4 transition hover:scale-[1.02] hover:shadow-md">
-<div class="p-3 bg-white rounded-xl shadow-sm text-2xl animate-float-slow">📅</div>
-<div>
-<h3 class="font-display font-bold text-rose-500 text-lg">When</h3>
-<p class="font-semibold text-gray-800">Saturday, Aug 29, 2026</p>
-<p class="text-sm text-gray-500">4:00 PM Onwards</p>
-<a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Ziya%27s+1st+Birthday+Party&dates=20260829T230000Z/20260830T020000Z&details=Join+us+in+celebrating+Ziya%27s+first+birthday!&location=704+Spring+St,+Seattle,+WA+98104" target="_blank" class="inline-block mt-2 text-xs font-bold text-rose-500 underline hover:text-rose-600">Add to Calendar →</a>
-</div>
-</div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block font-display font-bold text-sm text-gray-700">Will you attend?</label>
+            <select name="attendance" class="w-full mt-1 p-3.5 border-2 border-gray-200 rounded-2xl focus:border-party-pink outline-none font-semibold bg-white transition focus:ring-2 focus:ring-pink-100">
+              <option value="attending">Joyfully Accept 🎉</option>
+              <option value="declining">Regretfully Decline 💔</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-display font-bold text-sm text-gray-700">Total Guests</label>
+            <input type="number" name="guest_count" min="1" max="10" value="1" class="w-full mt-1 p-3.5 border-2 border-gray-200 rounded-2xl focus:border-party-pink outline-none font-semibold transition focus:ring-2 focus:ring-pink-100">
+          </div>
+        </div>
 
-<!-- Location -->
-<div class="bg-baby-blue/50 p-5 rounded-2xl border border-teal-100 flex items-start gap-4 transition hover:scale-[1.02] hover:shadow-md">
-<div class="p-3 bg-white rounded-xl shadow-sm text-2xl animate-float-fast">📍</div>
-<div>
-<h3 class="font-display font-bold text-teal-600 text-lg">Where</h3>
-<p class="font-semibold text-gray-800">704 Spring St</p>
-<p class="text-sm text-gray-500">Seattle, WA 98104</p>
-<a href="https://www.google.com/maps/search/?api=1&query=704+Spring+St+Seattle+WA+98104" target="_blank" class="inline-block mt-2 text-xs font-bold text-teal-600 underline hover:text-teal-700">Get Directions →</a>
-</div>
-</div>
-</div>
+        <div>
+          <label class="block font-display font-bold text-sm text-gray-700">Wish for Ziya (Optional)</label>
+          <textarea name="message" rows="3" class="w-full mt-1 p-3.5 border-2 border-gray-200 rounded-2xl focus:border-party-pink outline-none font-semibold transition focus:ring-2 focus:ring-pink-100" placeholder="Can't wait to see the birthday girl!"></placeholder>
+        </div>
 
-</div>
+        <button type="submit" id="submitBtn" class="w-full bg-gradient-to-r from-party-pink via-party-purple to-party-blue hover:opacity-95 active:scale-[0.99] text-white font-display font-bold text-xl py-4 rounded-2xl transition shadow-lg shadow-pink-200 cursor-pointer">
+          Send Response ✨
+        </button>
+      </form>
 
-<!-- RSVP Section -->
-<section id="rsvp" class="mt-8 bg-white rounded-3xl p-6 md:p-8 shadow-xl shadow-rose-100/50 border-4 border-baby-yellow relative overflow-hidden">
-<div class="text-center mb-6">
-<h2 class="font-display text-3xl font-bold text-amber-500 inline-flex items-center gap-2">
-<span class="animate-float-slow">🎈</span> Kindly RSVP <span class="animate-sparkle">✨</span>
-</h2>
-<p class="text-sm text-gray-500 mt-1">Please let us know if you can join the fun!</p>
-</div>
+      <div id="thankYouMsg" class="hidden text-center p-6 bg-emerald-50 border-2 border-emerald-300 text-emerald-800 font-display font-bold text-xl rounded-2xl animate-pop">
+        🎉 Yay! Your RSVP has been sent. See you at the party!
+      </div>
+    </section>
 
-<form id="rsvpForm" class="space-y-4 text-left">
-<div>
-<label class="block font-display font-semibold text-sm text-gray-700">Your Full Name</label>
-<input type="text" name="guest_name" class="w-full mt-1 p-3 border-2 border-gray-100 rounded-2xl focus:border-rose-300 outline-none font-medium transition focus:ring-2 focus:ring-rose-100" required placeholder="Aunt Sarah">
-</div>
+    <!-- Footer -->
+    <footer class="mt-8 text-center font-display font-bold text-sm text-party-purple">
+      Made with 💕 for Ziya's 1st Birthday
+    </footer>
+  </main>
 
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-<div>
-<label class="block font-display font-semibold text-sm text-gray-700">Will you attend?</label>
-<select name="attendance" class="w-full mt-1 p-3 border-2 border-gray-100 rounded-2xl focus:border-rose-300 outline-none font-medium bg-white transition focus:ring-2 focus:ring-rose-100">
-<option value="attending">Joyfully Accept 🎉</option>
-<option value="declining">Regretfully Decline 💔</option>
-</select>
-</div>
-<div>
-<label class="block font-display font-semibold text-sm text-gray-700">Total Guests</label>
-<input type="number" name="guest_count" min="1" max="10" value="1" class="w-full mt-1 p-3 border-2 border-gray-100 rounded-2xl focus:border-rose-300 outline-none font-medium transition focus:ring-2 focus:ring-rose-100">
-</div>
-</div>
+  <!-- Form Submission & Confetti Script -->
+  <script>
+    const form = document.getElementById('rsvpForm');
+    const thankYouMsg = document.getElementById('thankYouMsg');
+    const submitBtn = document.getElementById('submitBtn');
+    
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzcCksKC6Ej3k1EYri8M-bFXJzlbCU10X-Rc-AgzqbRT0uPProMT_xt0Y_uTHU7B_FV/exec';
 
-<div>
-<label class="block font-display font-semibold text-sm text-gray-700">Wish for Ziya (Optional)</label>
-<textarea name="message" rows="3" class="w-full mt-1 p-3 border-2 border-gray-100 rounded-2xl focus:border-rose-300 outline-none font-medium transition focus:ring-2 focus:ring-rose-100" placeholder="Can't wait to see the birthday girl!"></textarea>
-</div>
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      submitBtn.disabled = true;
+      submitBtn.innerText = 'Sending... ⏳';
 
-<button type="submit" id="submitBtn" class="w-full bg-rose-400 hover:bg-rose-500 active:scale-[0.99] text-white font-display font-bold text-lg py-3.5 rounded-2xl transition shadow-md shadow-rose-200 cursor-pointer">
-Send Response ✨
-</button>
-</form>
+      // Multi-colored explosion confetti
+      confetti({
+        particleCount: 150,
+        spread: 90,
+        origin: { y: 0.6 },
+        colors: ['#ff4d8d', '#ffbe0b', '#00b4d8', '#8338ec', '#06d6a0', '#fb5607']
+      });
 
-<div id="thankYouMsg" class="hidden text-center p-6 bg-emerald-50 border-2 border-emerald-200 text-emerald-800 font-display font-bold text-xl rounded-2xl animate-pop">
-🎉 Yay! Your RSVP has been sent. See you at the party!
-</div>
-</section>
+      const payload = new FormData(form);
 
-<!-- Footer -->
-<footer class="mt-8 text-center font-display font-medium text-sm text-rose-300">
-Made with 💕 for Ziya's 1st Birthday
-</footer>
-</main>
-
-<!-- Form Submission Script -->
-<script>
-const form = document.getElementById('rsvpForm');
-const thankYouMsg = document.getElementById('thankYouMsg');
-const submitBtn = document.getElementById('submitBtn');
-
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzcCksKC6Ej3k1EYri8M-bFXJzlbCU10X-Rc-AgzqbRT0uPProMT_xt0Y_uTHU7B_FV/exec';
-
-form.addEventListener('submit', function(e) {
-e.preventDefault();
-
-submitBtn.disabled = true;
-submitBtn.innerText = 'Sending... ⏳';
-
-confetti({
-particleCount: 120,
-spread: 70,
-origin: { y: 0.6 },
-colors: ['#fde2e4', '#cddaff', '#fff1e6', '#f0a6ca', '#e3b567']
-});
-
-const payload = new FormData(form);
-
-fetch(SCRIPT_URL, {
-method: 'POST',
-mode: 'no-cors',
-body: payload
-})
-.then(() => {
-form.reset();
-form.classList.add('hidden');
-thankYouMsg.classList.remove('hidden');
-})
-.catch(err => {
-alert("Something went wrong with the submission. Please try again!");
-submitBtn.disabled = false;
-submitBtn.innerText = 'Send Response ✨';
-});
-});
-</script>
+      fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: payload
+      })
+      .then(() => {
+        form.reset();
+        form.classList.add('hidden');
+        thankYouMsg.classList.remove('hidden');
+      })
+      .catch(err => {
+        alert("Something went wrong with the submission. Please try again!");
+        submitBtn.disabled = false;
+        submitBtn.innerText = 'Send Response ✨';
+      });
+    });
+  </script>
 </body>
 </html>
