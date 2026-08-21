@@ -21,7 +21,7 @@
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- Canvas Confetti & JS Confetti Libraries -->
+  <!-- Canvas Confetti Library -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
   <script>
@@ -33,13 +33,12 @@
             sans: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"SF Pro Text"', 'sans-serif'],
           },
           colors: {
-            'ios-pink': '#ff3b30',
+            'ios-pink': '#ff2d55',
             'ios-orange': '#ff9500',
             'ios-yellow': '#ffcc00',
             'ios-green': '#34c759',
             'ios-teal': '#30b0c7',
             'ios-blue': '#007aff',
-            'ios-indigo': '#5856d6',
             'ios-purple': '#af52de',
           },
         },
@@ -48,54 +47,76 @@
   </script>
 
   <style>
-    /* iOS 26 Mesh Vibrant Background */
+    /* Vibrant iOS Mesh Gradient Background */
     body {
-      background: radial-gradient(circle at 10% 20%, rgba(255, 204, 0, 0.25), transparent 40%),
-                  radial-gradient(circle at 90% 10%, rgba(255, 59, 48, 0.2), transparent 40%),
-                  radial-gradient(circle at 50% 50%, rgba(175, 82, 222, 0.15), transparent 50%),
-                  radial-gradient(circle at 80% 80%, rgba(48, 176, 199, 0.25), transparent 40%),
-                  radial-gradient(circle at 20% 85%, rgba(52, 199, 89, 0.2), transparent 40%),
-                  #f6f6f9;
+      background: 
+        radial-gradient(circle at 15% 15%, rgba(255, 45, 85, 0.25), transparent 45%),
+        radial-gradient(circle at 85% 20%, rgba(255, 149, 0, 0.25), transparent 45%),
+        radial-gradient(circle at 50% 50%, rgba(175, 82, 222, 0.2), transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(0, 122, 255, 0.25), transparent 45%),
+        radial-gradient(circle at 20% 85%, rgba(52, 199, 89, 0.2), transparent 45%),
+        #f8f9fe;
       background-attachment: fixed;
     }
 
-    /* Glassmorphism iOS Card Styling */
-    .ios-glass-card {
-      background: rgba(255, 255, 255, 0.65);
-      backdrop-filter: blur(25px) saturate(190%);
-      -webkit-backdrop-filter: blur(25px) saturate(190%);
+    /* Gradient Border Wrapper for High-End Glass Look */
+    .glass-card-hero {
+      position: relative;
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(30px) saturate(200%);
+      -webkit-backdrop-filter: blur(30px) saturate(200%);
+      border-radius: 36px;
+      padding: 2px;
+      box-shadow: 
+        0 30px 60px -12px rgba(255, 45, 85, 0.12),
+        0 18px 36px -18px rgba(0, 122, 255, 0.15),
+        inset 0 1px 1px rgba(255, 255, 255, 0.9);
+    }
+
+    .glass-card-inner {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.55) 100%);
+      border-radius: 34px;
+    }
+
+    /* Interactive Sub-Cards */
+    .glass-pill-interactive {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.6) 100%);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border: 1px solid rgba(255, 255, 255, 0.8);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.04);
+      box-shadow: 
+        0 10px 25px -5px rgba(0, 0, 0, 0.04),
+        0 4px 10px -2px rgba(0, 0, 0, 0.02);
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
-    .ios-glass-pill {
-      background: rgba(255, 255, 255, 0.75);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.9);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    .glass-pill-interactive:hover {
+      transform: translateY(-3px) scale(1.01);
+      box-shadow: 
+        0 18px 30px -5px rgba(0, 0, 0, 0.08),
+        0 8px 15px -3px rgba(0, 0, 0, 0.04);
+      background: rgba(255, 255, 255, 0.95);
     }
 
-    /* iOS 26 Smooth Spring Animations */
+    /* Animations */
     @keyframes floatSoft {
-      0%, 100% { transform: translateY(0px) scale(1); }
-      50% { transform: translateY(-8px) scale(1.02); }
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
     }
 
     @keyframes pulseGlow {
-      0%, 100% { filter: drop-shadow(0 0 10px rgba(255, 77, 141, 0.3)); }
-      50% { filter: drop-shadow(0 0 22px rgba(255, 204, 0, 0.6)); }
+      0%, 100% { filter: drop-shadow(0 4px 12px rgba(255, 45, 85, 0.3)); }
+      50% { filter: drop-shadow(0 8px 24px rgba(255, 204, 0, 0.6)); }
     }
 
     .animate-ios-float {
-      animation: floatSoft 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+      animation: floatSoft 4s ease-in-out infinite;
     }
 
     .animate-pulse-glow {
       animation: pulseGlow 3s ease-in-out infinite;
     }
 
-    /* Canvas overlay for continuous drifting party confetti */
     #confettiCanvas {
       position: fixed;
       top: 0;
@@ -109,134 +130,138 @@
 </head>
 <body class="text-gray-900 font-sans antialiased pb-12 relative min-h-screen overflow-x-hidden">
 
-  <!-- Interactive Floating Background Canvas -->
+  <!-- Interactive Drifting Confetti Background -->
   <canvas id="confettiCanvas"></canvas>
 
-  <!-- Main Hero Card Container -->
-  <main class="max-w-xl mx-auto px-4 pt-8 relative z-10">
+  <main class="max-w-xl mx-auto px-4 pt-6 md:pt-10 relative z-10">
     
-    <div class="ios-glass-card rounded-[38px] p-6 md:p-10 text-center relative overflow-hidden transition-all duration-300 hover:shadow-2xl">
+    <!-- Hero Glass Card with Glowing Gradient Border -->
+    <div class="glass-card-hero p-[2px] bg-gradient-to-b from-white via-white/80 to-pink-200/50">
+      <div class="glass-card-inner p-6 md:p-10 text-center relative overflow-hidden">
 
-      <!-- Balloons Vector Graphic Header -->
-      <div class="flex justify-center items-center mb-4 relative animate-ios-float">
-        <svg class="w-40 h-36 animate-pulse-glow" viewBox="0 0 160 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Balloon Strings -->
-          <path d="M80 85 Q 75 110 70 135" stroke="#a1a1aa" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-          <path d="M52 75 Q 60 105 65 135" stroke="#a1a1aa" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-          <path d="M108 75 Q 100 105 95 135" stroke="#a1a1aa" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+        <!-- Glowing Decorative Backplate -->
+        <div class="absolute -top-12 -right-12 w-40 h-40 bg-gradient-to-br from-ios-yellow/30 to-ios-pink/30 rounded-full blur-2xl pointer-events-none"></div>
+        <div class="absolute -bottom-12 -left-12 w-40 h-40 bg-gradient-to-br from-ios-blue/30 to-ios-purple/30 rounded-full blur-2xl pointer-events-none"></div>
 
-          <!-- Left Balloon (Cyan) -->
-          <ellipse cx="50" cy="52" rx="22" ry="27" fill="#30b0c7"/>
-          <ellipse cx="44" cy="42" rx="6" ry="10" fill="#ffffff" opacity="0.45"/>
-          <polygon points="50,79 46,84 54,84" fill="#30b0c7"/>
+        <!-- Balloons Header Graphic -->
+        <div class="flex justify-center items-center mb-3 relative animate-ios-float">
+          <svg class="w-40 h-36 animate-pulse-glow" viewBox="0 0 160 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M80 85 Q 75 110 70 135" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+            <path d="M52 75 Q 60 105 65 135" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+            <path d="M108 75 Q 100 105 95 135" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round" fill="none"/>
 
-          <!-- Right Balloon (Purple) -->
-          <ellipse cx="110" cy="52" rx="22" ry="27" fill="#af52de"/>
-          <ellipse cx="104" cy="42" rx="6" ry="10" fill="#ffffff" opacity="0.45"/>
-          <polygon points="110,79 106,84 114,84" fill="#af52de"/>
+            <ellipse cx="50" cy="52" rx="22" ry="27" fill="#30b0c7"/>
+            <ellipse cx="44" cy="42" rx="6" ry="10" fill="#ffffff" opacity="0.45"/>
+            <polygon points="50,79 46,84 54,84" fill="#30b0c7"/>
 
-          <!-- Center Balloon (Bright Pink) -->
-          <ellipse cx="80" cy="42" rx="27" ry="33" fill="#ff2d55"/>
-          <ellipse cx="72" cy="30" rx="8" ry="12" fill="#ffffff" opacity="0.5"/>
-          <polygon points="80,75 75,81 85,81" fill="#ff2d55"/>
-        </svg>
-      </div>
+            <ellipse cx="110" cy="52" rx="22" ry="27" fill="#af52de"/>
+            <ellipse cx="104" cy="42" rx="6" ry="10" fill="#ffffff" opacity="0.45"/>
+            <polygon points="110,79 106,84 114,84" fill="#af52de"/>
 
-      <!-- Invitation Tagline Pill -->
-      <span class="inline-flex items-center gap-1.5 ios-glass-pill px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide text-gray-700 uppercase mb-3">
-        ✨ You're Invited ✨
-      </span>
-
-      <!-- Main Headline -->
-      <h1 class="font-display text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-ios-pink via-ios-purple to-ios-blue leading-tight">
-        Ziya is Turning ONE!
-      </h1>
-
-      <p class="text-gray-600 font-medium text-base md:text-lg mt-3 max-w-sm mx-auto">
-        Join us for sweet treats, games & giggles as we celebrate Ziya’s special first milestone! 🥳
-      </p>
-
-      <!-- Event Info Pills -->
-      <div class="mt-8 space-y-3 text-left">
-        
-        <!-- Date & Time Card -->
-        <div class="ios-glass-pill p-4 rounded-3xl flex items-center gap-4 transition hover:scale-[1.01]">
-          
-          <!-- Custom SVG Calendar Icon with "29" -->
-          <div class="w-13 h-13 rounded-2xl bg-white shadow-sm border border-gray-100 flex flex-col items-center justify-center overflow-hidden shrink-0">
-            <div class="w-full bg-ios-pink text-white text-[9px] font-bold uppercase text-center py-0.5 tracking-wider">AUG</div>
-            <span class="font-display text-xl font-bold text-gray-900 leading-none py-1">29</span>
-          </div>
-
-          <div class="flex-1 min-w-0">
-            <h3 class="font-display font-bold text-gray-900 text-base">Saturday, August 29, 2026</h3>
-            <p class="text-xs font-medium text-gray-500">4:00 PM Onwards</p>
-          </div>
-          
-          <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Ziya%27s+1st+Birthday+Party&dates=20260829T230000Z/20260830T020000Z&details=Join+us+in+celebrating+Ziya%27s+first+birthday!&location=704+Spring+St,+Seattle,+WA+98104" target="_blank" class="px-3 py-1.5 bg-ios-pink/10 hover:bg-ios-pink/20 text-ios-pink font-semibold text-xs rounded-full transition shrink-0">
-            + Calendar
-          </a>
+            <ellipse cx="80" cy="42" rx="27" ry="33" fill="#ff2d55"/>
+            <ellipse cx="72" cy="30" rx="8" ry="12" fill="#ffffff" opacity="0.5"/>
+            <polygon points="80,75 75,81 85,81" fill="#ff2d55"/>
+          </svg>
         </div>
 
-        <!-- Location Card -->
-        <div class="ios-glass-pill p-4 rounded-3xl flex items-center gap-4 transition hover:scale-[1.01]">
-          <div class="w-13 h-13 rounded-2xl bg-ios-blue/10 text-ios-blue flex items-center justify-center text-2xl shrink-0">
-            📍
+        <!-- Invitation Badge Pill -->
+        <div class="inline-block p-[1px] bg-gradient-to-r from-ios-pink via-ios-purple to-ios-blue rounded-full mb-3 shadow-sm">
+          <span class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-white/90 backdrop-blur-md text-xs font-bold tracking-wider text-gray-800 uppercase">
+            ✨ You're Invited ✨
+          </span>
+        </div>
+
+        <!-- Main Headline -->
+        <h1 class="font-display text-4xl md:text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-ios-pink via-ios-purple to-ios-blue leading-tight tracking-tight">
+          Ziya is Turning ONE!
+        </h1>
+
+        <p class="text-gray-600 font-medium text-base md:text-lg mt-3 max-w-sm mx-auto">
+          Join us for sweet treats, games & giggles as we celebrate Ziya’s special first milestone! 🥳
+        </p>
+
+        <!-- Dynamic Event Cards -->
+        <div class="mt-8 space-y-3.5 text-left">
+          
+          <!-- Date Card -->
+          <div class="glass-pill-interactive p-4 rounded-3xl flex items-center gap-4">
+            <div class="w-14 h-14 rounded-2xl bg-white shadow-md border border-gray-100 flex flex-col items-center justify-center overflow-hidden shrink-0">
+              <div class="w-full bg-ios-pink text-white text-[10px] font-extrabold uppercase text-center py-0.5 tracking-wider">AUG</div>
+              <span class="font-display text-2xl font-bold text-gray-900 leading-none py-0.5">29</span>
+            </div>
+
+            <div class="flex-1 min-w-0">
+              <h3 class="font-display font-bold text-gray-900 text-base md:text-lg">Saturday, August 29</h3>
+              <p class="text-xs font-semibold text-gray-500">4:00 PM Onwards</p>
+            </div>
+            
+            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Ziya%27s+1st+Birthday+Party&dates=20260829T230000Z/20260830T020000Z&details=Join+us+in+celebrating+Ziya%27s+first+birthday!&location=704+Spring+St,+Seattle,+WA+98104" target="_blank" class="px-3.5 py-2 bg-ios-pink text-white font-bold text-xs rounded-full shadow-sm shadow-pink-200 hover:bg-rose-600 transition shrink-0">
+              + Calendar
+            </a>
           </div>
-          <div class="flex-1 min-w-0">
-            <h3 class="font-display font-bold text-gray-900 text-base">704 Spring St</h3>
-            <p class="text-xs font-medium text-gray-500">Seattle, WA 98104</p>
+
+          <!-- Location Card -->
+          <div class="glass-pill-interactive p-4 rounded-3xl flex items-center gap-4">
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-ios-blue/20 to-ios-teal/20 text-ios-blue flex items-center justify-center text-2xl border border-ios-blue/20 shrink-0">
+              📍
+            </div>
+            <div class="flex-1 min-w-0">
+              <h3 class="font-display font-bold text-gray-900 text-base md:text-lg">704 Spring St</h3>
+              <p class="text-xs font-semibold text-gray-500">Seattle, WA 98104</p>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=704+Spring+St+Seattle+WA+98104" target="_blank" class="px-3.5 py-2 bg-ios-blue text-white font-bold text-xs rounded-full shadow-sm shadow-blue-200 hover:bg-blue-600 transition shrink-0">
+              Directions
+            </a>
           </div>
-          <a href="https://www.google.com/maps/search/?api=1&query=704+Spring+St+Seattle+WA+98104" target="_blank" class="px-3 py-1.5 bg-ios-blue/10 hover:bg-ios-blue/20 text-ios-blue font-semibold text-xs rounded-full transition shrink-0">
-            Maps
-          </a>
+
         </div>
 
       </div>
-
     </div>
 
-    <!-- RSVP Section -->
-    <section id="rsvp" class="ios-glass-card mt-6 rounded-[38px] p-6 md:p-8 relative overflow-hidden">
-      <div class="text-center mb-6">
-        <h2 class="font-display text-2xl md:text-3xl font-bold text-gray-900">
-          Kindly RSVP
-        </h2>
-        <p class="text-xs font-medium text-gray-500 mt-1">Please respond at your earliest convenience</p>
-      </div>
-
-      <form id="rsvpForm" class="space-y-4 text-left">
-        <div>
-          <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider ml-1 mb-1">Your Full Name</label>
-          <input type="text" name="guest_name" class="w-full p-3.5 bg-white/80 border border-gray-200/80 rounded-2xl focus:bg-white focus:border-ios-blue outline-none font-medium text-gray-900 transition shadow-sm" required placeholder="Aunt Sarah">
+    <!-- RSVP Section Glass Card -->
+    <section id="rsvp" class="glass-card-hero mt-6 p-[2px] bg-gradient-to-b from-white via-white/80 to-purple-200/50">
+      <div class="glass-card-inner p-6 md:p-8 relative overflow-hidden">
+        <div class="text-center mb-6">
+          <h2 class="font-display text-2xl md:text-3xl font-bold text-gray-900">
+            Kindly RSVP
+          </h2>
+          <p class="text-xs font-medium text-gray-500 mt-1">Please respond at your earliest convenience</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <form id="rsvpForm" class="space-y-4 text-left">
           <div>
-            <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider ml-1 mb-1">Attendance</label>
-            <select name="attendance" class="w-full p-3.5 bg-white/80 border border-gray-200/80 rounded-2xl focus:bg-white focus:border-ios-blue outline-none font-medium text-gray-900 transition shadow-sm">
-              <option value="attending">Joyfully Accept 🎉</option>
-              <option value="declining">Regretfully Decline 💔</option>
-            </select>
+            <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider ml-1 mb-1.5">Your Full Name</label>
+            <input type="text" name="guest_name" class="w-full p-3.5 bg-white/90 border border-gray-200 rounded-2xl focus:bg-white focus:border-ios-blue outline-none font-semibold text-gray-900 transition shadow-sm focus:ring-4 focus:ring-blue-100" required placeholder="Aunt Sarah">
           </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider ml-1 mb-1.5">Attendance</label>
+              <select name="attendance" class="w-full p-3.5 bg-white/90 border border-gray-200 rounded-2xl focus:bg-white focus:border-ios-blue outline-none font-semibold text-gray-900 transition shadow-sm focus:ring-4 focus:ring-blue-100">
+                <option value="attending">Joyfully Accept 🎉</option>
+                <option value="declining">Regretfully Decline 💔</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider ml-1 mb-1.5">Total Guests</label>
+              <input type="number" name="guest_count" min="1" max="10" value="1" class="w-full p-3.5 bg-white/90 border border-gray-200 rounded-2xl focus:bg-white focus:border-ios-blue outline-none font-semibold text-gray-900 transition shadow-sm focus:ring-4 focus:ring-blue-100">
+            </div>
+          </div>
+
           <div>
-            <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider ml-1 mb-1">Total Guests</label>
-            <input type="number" name="guest_count" min="1" max="10" value="1" class="w-full p-3.5 bg-white/80 border border-gray-200/80 rounded-2xl focus:bg-white focus:border-ios-blue outline-none font-medium text-gray-900 transition shadow-sm">
+            <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider ml-1 mb-1.5">Wish for Ziya (Optional)</label>
+            <textarea name="message" rows="3" class="w-full p-3.5 bg-white/90 border border-gray-200 rounded-2xl focus:bg-white focus:border-ios-blue outline-none font-semibold text-gray-900 transition shadow-sm focus:ring-4 focus:ring-blue-100" placeholder="Can't wait to see the birthday girl!"></textarea>
           </div>
+
+          <button type="submit" id="submitBtn" class="w-full bg-gradient-to-r from-ios-blue via-ios-indigo to-ios-purple hover:opacity-95 active:scale-[0.98] text-white font-display font-bold text-lg py-4 rounded-2xl transition duration-200 shadow-xl shadow-indigo-200 cursor-pointer">
+            Send Response ✨
+          </button>
+        </form>
+
+        <div id="thankYouMsg" class="hidden text-center p-6 bg-ios-green/10 border border-ios-green/30 text-ios-green font-display font-bold text-lg rounded-2xl">
+          🎉 Yay! Your RSVP has been received. See you there!
         </div>
-
-        <div>
-          <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider ml-1 mb-1">Wish for Ziya (Optional)</label>
-          <textarea name="message" rows="3" class="w-full p-3.5 bg-white/80 border border-gray-200/80 rounded-2xl focus:bg-white focus:border-ios-blue outline-none font-medium text-gray-900 transition shadow-sm" placeholder="Can't wait to see the birthday girl!"></textarea>
-        </div>
-
-        <button type="submit" id="submitBtn" class="w-full bg-ios-blue hover:bg-blue-600 active:scale-[0.98] text-white font-display font-bold text-lg py-4 rounded-2xl transition duration-200 shadow-lg shadow-blue-500/25 cursor-pointer">
-          Send Response
-        </button>
-      </form>
-
-      <div id="thankYouMsg" class="hidden text-center p-6 bg-ios-green/10 border border-ios-green/30 text-ios-green font-display font-bold text-lg rounded-2xl">
-        🎉 Yay! Your RSVP has been received. See you there!
       </div>
     </section>
 
@@ -246,9 +271,8 @@
     </footer>
   </main>
 
-  <!-- Continuous Drifting Confetti + Form Burst Script -->
+  <!-- Canvas Drifting Confetti & RSVP Explosion Script -->
   <script>
-    /* Continuous background confetti particles */
     const canvas = document.getElementById('confettiCanvas');
     const ctx = canvas.getContext('2d');
     
@@ -260,11 +284,11 @@
       height = canvas.height = window.innerHeight;
     });
 
-    const particles = Array.from({ length: 35 }, () => ({
+    const particles = Array.from({ length: 40 }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
       size: Math.random() * 7 + 4,
-      color: ['#ff3b30', '#ff9500', '#ffcc00', '#34c759', '#007aff', '#af52de'][Math.floor(Math.random() * 6)],
+      color: ['#ff2d55', '#ff9500', '#ffcc00', '#34c759', '#007aff', '#af52de'][Math.floor(Math.random() * 6)],
       speedY: Math.random() * 1.2 + 0.4,
       speedX: Math.sin(Math.random() * Math.PI) - 0.5,
       rotation: Math.random() * 360,
@@ -294,7 +318,7 @@
     }
     renderConfetti();
 
-    /* Form RSVP Explosion Script */
+    /* Form RSVP Script */
     const form = document.getElementById('rsvpForm');
     const thankYouMsg = document.getElementById('thankYouMsg');
     const submitBtn = document.getElementById('submitBtn');
@@ -305,14 +329,13 @@
       e.preventDefault();
       
       submitBtn.disabled = true;
-      submitBtn.innerText = 'Sending...';
+      submitBtn.innerText = 'Sending... ⏳';
 
-      // Enhanced party burst
       confetti({
         particleCount: 180,
         spread: 100,
         origin: { y: 0.6 },
-        colors: ['#ff3b30', '#ff9500', '#ffcc00', '#34c759', '#007aff', '#af52de']
+        colors: ['#ff2d55', '#ff9500', '#ffcc00', '#34c759', '#007aff', '#af52de']
       });
 
       const payload = new FormData(form);
@@ -330,7 +353,7 @@
       .catch(err => {
         alert("Something went wrong. Please try again!");
         submitBtn.disabled = false;
-        submitBtn.innerText = 'Send Response';
+        submitBtn.innerText = 'Send Response ✨';
       });
     });
   </script>
