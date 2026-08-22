@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ziya is Turning One! 🥳🎉</title>
+  <title>Ziya is Turning One! 🎂🎈🎉</title>
 
   <!-- Open Graph Meta Tags -->
   <meta property="og:title" content="Ziya is Turning ONE! 🥳🎉">
@@ -13,10 +13,10 @@
   <meta property="og:image:height" content="630">
   <meta property="og:type" content="website">
 
-  <!-- Apple System & Playful Fonts -->
+  <!-- Google Fonts for Playful Baby Style -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Grandstander:wght@600;700;800&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -29,17 +29,16 @@
       theme: {
         extend: {
           fontFamily: {
-            display: ['Fredoka', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
-            sans: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"SF Pro Text"', 'sans-serif'],
+            display: ['Grandstander', 'Fredoka', 'sans-serif'],
+            sans: ['Fredoka', 'sans-serif'],
           },
           colors: {
-            'ios-pink': '#ff2d55',
-            'ios-orange': '#ff9500',
-            'ios-yellow': '#ffcc00',
-            'ios-green': '#34c759',
-            'ios-teal': '#30b0c7',
-            'ios-blue': '#007aff',
-            'ios-purple': '#af52de',
+            'party-pink': '#ff3b75',
+            'party-yellow': '#ffc300',
+            'party-blue': '#00bbf9',
+            'party-purple': '#9b5de5',
+            'party-green': '#00f5d4',
+            'party-orange': '#ff6b35',
           },
         },
       },
@@ -47,74 +46,61 @@
   </script>
 
   <style>
-    /* Vibrant iOS Mesh Gradient Background */
+    /* Bright & Cheerful Celebration Pattern Background */
     body {
-      background: 
-        radial-gradient(circle at 15% 15%, rgba(255, 45, 85, 0.25), transparent 45%),
-        radial-gradient(circle at 85% 20%, rgba(255, 149, 0, 0.25), transparent 45%),
-        radial-gradient(circle at 50% 50%, rgba(175, 82, 222, 0.2), transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(0, 122, 255, 0.25), transparent 45%),
-        radial-gradient(circle at 20% 85%, rgba(52, 199, 89, 0.2), transparent 45%),
-        #f8f9fe;
+      background-color: #fffdf0;
+      background-image: 
+        radial-gradient(#ff3b75 3.5px, transparent 3.5px),
+        radial-gradient(#00bbf9 3.5px, transparent 3.5px),
+        radial-gradient(#ffc300 3.5px, transparent 3.5px),
+        radial-gradient(#9b5de5 3.5px, transparent 3.5px);
+      background-size: 50px 50px, 60px 60px, 40px 40px, 70px 70px;
+      background-position: 0 0, 25px 25px, 15px 15px, 35px 35px;
       background-attachment: fixed;
     }
 
-    /* Gradient Border Wrapper for High-End Glass Look */
-    .glass-card-hero {
-      position: relative;
-      background: rgba(255, 255, 255, 0.72);
-      backdrop-filter: blur(30px) saturate(200%);
-      -webkit-backdrop-filter: blur(30px) saturate(200%);
+    /* Vibrant Multi-Border Party Cards */
+    .rainbow-card {
+      background: #ffffff;
       border-radius: 36px;
-      padding: 2px;
+      position: relative;
       box-shadow: 
-        0 30px 60px -12px rgba(255, 45, 85, 0.12),
-        0 18px 36px -18px rgba(0, 122, 255, 0.15),
-        inset 0 1px 1px rgba(255, 255, 255, 0.9);
+        0 20px 40px -10px rgba(255, 59, 117, 0.25),
+        0 10px 20px -5px rgba(0, 187, 249, 0.2);
     }
 
-    .glass-card-inner {
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.55) 100%);
-      border-radius: 34px;
+    .rainbow-card::before {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      border-radius: 42px;
+      background: linear-gradient(135deg, #ff3b75, #ffc300, #00f5d4, #00bbf9, #9b5de5);
+      z-index: -1;
+      animation: rainbowGlow 6s linear infinite;
     }
 
-    /* Interactive Sub-Cards */
-    .glass-pill-interactive {
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.6) 100%);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.8);
-      box-shadow: 
-        0 10px 25px -5px rgba(0, 0, 0, 0.04),
-        0 4px 10px -2px rgba(0, 0, 0, 0.02);
-      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    @keyframes rainbowGlow {
+      0% { filter: hue-rotate(0deg); }
+      100% { filter: hue-rotate(360deg); }
     }
 
-    .glass-pill-interactive:hover {
-      transform: translateY(-3px) scale(1.01);
-      box-shadow: 
-        0 18px 30px -5px rgba(0, 0, 0, 0.08),
-        0 8px 15px -3px rgba(0, 0, 0, 0.04);
-      background: rgba(255, 255, 255, 0.95);
+    /* Bouncy Animations */
+    @keyframes bounceGentle {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(2deg); }
     }
 
-    /* Animations */
-    @keyframes floatSoft {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(-3deg); }
+      50% { transform: rotate(3deg); }
     }
 
-    @keyframes pulseGlow {
-      0%, 100% { filter: drop-shadow(0 4px 12px rgba(255, 45, 85, 0.3)); }
-      50% { filter: drop-shadow(0 8px 24px rgba(255, 204, 0, 0.6)); }
+    .animate-bounce-gentle {
+      animation: bounceGentle 3s ease-in-out infinite;
     }
 
-    .animate-ios-float {
-      animation: floatSoft 4s ease-in-out infinite;
-    }
-
-    .animate-pulse-glow {
-      animation: pulseGlow 3s ease-in-out infinite;
+    .animate-wiggle {
+      animation: wiggle 2s ease-in-out infinite;
     }
 
     #confettiCanvas {
@@ -128,145 +114,164 @@
     }
   </style>
 </head>
-<body class="text-gray-900 font-sans antialiased pb-12 relative min-h-screen overflow-x-hidden">
+<body class="text-gray-800 font-sans antialiased pb-12 relative min-h-screen overflow-x-hidden">
 
-  <!-- Interactive Drifting Confetti Background -->
+  <!-- Interactive Floating Background Canvas -->
   <canvas id="confettiCanvas"></canvas>
 
-  <main class="max-w-xl mx-auto px-4 pt-6 md:pt-10 relative z-10">
+  <!-- Festive Bunting Streamer Top Banner -->
+  <div class="w-full overflow-hidden leading-none relative z-10 opacity-95">
+    <svg class="w-full h-14 md:h-20" viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <polygon points="0,0 60,95 120,0" fill="#ff3b75"/>
+      <polygon points="120,0 180,95 240,0" fill="#ffc300"/>
+      <polygon points="240,0 300,95 360,0" fill="#00bbf9"/>
+      <polygon points="360,0 420,95 480,0" fill="#00f5d4"/>
+      <polygon points="480,0 540,95 600,0" fill="#9b5de5"/>
+      <polygon points="600,0 660,95 720,0" fill="#ff6b35"/>
+      <polygon points="720,0 780,95 840,0" fill="#ff3b75"/>
+      <polygon points="840,0 900,95 960,0" fill="#ffc300"/>
+      <polygon points="960,0 1020,95 1080,0" fill="#00bbf9"/>
+      <polygon points="1080,0 1140,95 1200,0" fill="#00f5d4"/>
+    </svg>
+  </div>
+
+  <main class="max-w-xl mx-auto px-4 pt-4 relative z-10">
     
-    <!-- Hero Glass Card with Glowing Gradient Border -->
-    <div class="glass-card-hero p-[2px] bg-gradient-to-b from-white via-white/80 to-pink-200/50">
-      <div class="glass-card-inner p-6 md:p-10 text-center relative overflow-hidden">
+    <!-- Hero Card -->
+    <div class="rainbow-card p-6 md:p-10 text-center relative overflow-hidden">
 
-        <!-- Glowing Decorative Backplate -->
-        <div class="absolute -top-12 -right-12 w-40 h-40 bg-gradient-to-br from-ios-yellow/30 to-ios-pink/30 rounded-full blur-2xl pointer-events-none"></div>
-        <div class="absolute -bottom-12 -left-12 w-40 h-40 bg-gradient-to-br from-ios-blue/30 to-ios-purple/30 rounded-full blur-2xl pointer-events-none"></div>
+      <!-- Playful Floating Emojis in Hero Card Corner -->
+      <div class="absolute top-4 left-4 text-3xl animate-bounce-gentle">🎁</div>
+      <div class="absolute top-4 right-4 text-3xl animate-bounce-gentle" style="animation-delay: 0.5s;">🎂</div>
 
-        <!-- Balloons Header Graphic -->
-        <div class="flex justify-center items-center mb-3 relative animate-ios-float">
-          <svg class="w-40 h-36 animate-pulse-glow" viewBox="0 0 160 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M80 85 Q 75 110 70 135" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-            <path d="M52 75 Q 60 105 65 135" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-            <path d="M108 75 Q 100 105 95 135" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <!-- Colorful Balloon Cluster Graphic -->
+      <div class="flex justify-center items-center mb-2 relative animate-bounce-gentle">
+        <svg class="w-44 h-40" viewBox="0 0 160 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Strings -->
+          <path d="M80 85 Q 75 110 70 135" stroke="#ff3b75" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <path d="M52 75 Q 60 105 65 135" stroke="#00bbf9" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <path d="M108 75 Q 100 105 95 135" stroke="#9b5de5" stroke-width="2" stroke-linecap="round" fill="none"/>
 
-            <ellipse cx="50" cy="52" rx="22" ry="27" fill="#30b0c7"/>
-            <ellipse cx="44" cy="42" rx="6" ry="10" fill="#ffffff" opacity="0.45"/>
-            <polygon points="50,79 46,84 54,84" fill="#30b0c7"/>
+          <!-- Left Balloon -->
+          <ellipse cx="50" cy="52" rx="22" ry="27" fill="#00bbf9"/>
+          <ellipse cx="44" cy="42" rx="6" ry="10" fill="#ffffff" opacity="0.5"/>
+          <polygon points="50,79 46,84 54,84" fill="#00bbf9"/>
 
-            <ellipse cx="110" cy="52" rx="22" ry="27" fill="#af52de"/>
-            <ellipse cx="104" cy="42" rx="6" ry="10" fill="#ffffff" opacity="0.45"/>
-            <polygon points="110,79 106,84 114,84" fill="#af52de"/>
+          <!-- Right Balloon -->
+          <ellipse cx="110" cy="52" rx="22" ry="27" fill="#9b5de5"/>
+          <ellipse cx="104" cy="42" rx="6" ry="10" fill="#ffffff" opacity="0.5"/>
+          <polygon points="110,79 106,84 114,84" fill="#9b5de5"/>
 
-            <ellipse cx="80" cy="42" rx="27" ry="33" fill="#ff2d55"/>
-            <ellipse cx="72" cy="30" rx="8" ry="12" fill="#ffffff" opacity="0.5"/>
-            <polygon points="80,75 75,81 85,81" fill="#ff2d55"/>
-          </svg>
-        </div>
+          <!-- Center Balloon -->
+          <ellipse cx="80" cy="42" rx="27" ry="33" fill="#ff3b75"/>
+          <ellipse cx="72" cy="30" rx="8" ry="12" fill="#ffffff" opacity="0.6"/>
+          <polygon points="80,75 75,81 85,81" fill="#ff3b75"/>
 
-        <!-- Invitation Badge Pill -->
-        <div class="inline-block p-[1px] bg-gradient-to-r from-ios-pink via-ios-purple to-ios-blue rounded-full mb-3 shadow-sm">
-          <span class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-white/90 backdrop-blur-md text-xs font-bold tracking-wider text-gray-800 uppercase">
-            ✨ You're Invited ✨
-          </span>
-        </div>
+          <!-- Cute Ribbon Bow -->
+          <circle cx="80" cy="135" r="4" fill="#ffc300"/>
+        </svg>
+      </div>
 
-        <!-- Main Headline -->
-        <h1 class="font-display text-4xl md:text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-ios-pink via-ios-purple to-ios-blue leading-tight tracking-tight">
-          Ziya is Turning ONE!
-        </h1>
+      <!-- Invitation Badge Pill -->
+      <div class="inline-block bg-gradient-to-r from-party-yellow via-party-orange to-party-pink px-6 py-2 rounded-full mb-3 shadow-md transform -rotate-1 animate-wiggle">
+        <span class="font-display font-extrabold text-sm md:text-base text-white tracking-wide uppercase drop-shadow-sm">
+          🎈 You're Invited to Ziya's Party! 🎉
+        </span>
+      </div>
 
-        <p class="text-gray-600 font-medium text-base md:text-lg mt-3 max-w-sm mx-auto">
-          Join us for sweet treats, games & giggles as we celebrate Ziya’s special first milestone! 🥳
-        </p>
+      <!-- Main Headline -->
+      <h1 class="font-display text-4xl md:text-6xl font-black text-party-pink leading-tight tracking-wide drop-shadow-sm">
+        Ziya is Turning ONE!
+      </h1>
 
-        <!-- Dynamic Event Cards -->
-        <div class="mt-8 space-y-3.5 text-left">
+      <p class="text-gray-700 font-bold text-base md:text-xl mt-3 max-w-sm mx-auto">
+        One year of sweet smiles & tiny steps! Join us for cake, playtime & fun! 🧁
+      </p>
+
+      <!-- Event Details Cards -->
+      <div class="mt-8 space-y-4 text-left">
+        
+        <!-- Date Card -->
+        <div class="bg-amber-100/80 border-3 border-party-yellow p-4 rounded-3xl flex items-center gap-4 shadow-sm hover:scale-[1.02] transition">
+          <div class="w-14 h-14 rounded-2xl bg-party-yellow text-gray-900 shadow-md flex flex-col items-center justify-center shrink-0 border-2 border-white">
+            <div class="text-[10px] font-black uppercase tracking-wider text-party-orange">AUG</div>
+            <span class="font-display text-2xl font-black leading-none">29</span>
+          </div>
+
+          <div class="flex-1 min-w-0">
+            <h3 class="font-display font-extrabold text-party-orange text-lg">Saturday, August 29</h3>
+            <p class="text-xs font-bold text-gray-600">4:00 PM Onwards</p>
+          </div>
           
-          <!-- Date Card -->
-          <div class="glass-pill-interactive p-4 rounded-3xl flex items-center gap-4">
-            <div class="w-14 h-14 rounded-2xl bg-white shadow-md border border-gray-100 flex flex-col items-center justify-center overflow-hidden shrink-0">
-              <div class="w-full bg-ios-pink text-white text-[10px] font-extrabold uppercase text-center py-0.5 tracking-wider">AUG</div>
-              <span class="font-display text-2xl font-bold text-gray-900 leading-none py-0.5">29</span>
-            </div>
+          <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Ziya%27s+1st+Birthday+Party&dates=20260829T230000Z/20260830T020000Z&details=Join+us+in+celebrating+Ziya%27s+first+birthday!&location=704+Spring+St,+Seattle,+WA+98104" target="_blank" class="px-4 py-2 bg-party-orange hover:bg-orange-600 text-white font-extrabold text-xs rounded-full shadow-md transition shrink-0">
+            + Calendar
+          </a>
+        </div>
 
-            <div class="flex-1 min-w-0">
-              <h3 class="font-display font-bold text-gray-900 text-base md:text-lg">Saturday, August 29</h3>
-              <p class="text-xs font-semibold text-gray-500">4:00 PM Onwards</p>
-            </div>
-            
-            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Ziya%27s+1st+Birthday+Party&dates=20260829T230000Z/20260830T020000Z&details=Join+us+in+celebrating+Ziya%27s+first+birthday!&location=704+Spring+St,+Seattle,+WA+98104" target="_blank" class="px-3.5 py-2 bg-ios-pink text-white font-bold text-xs rounded-full shadow-sm shadow-pink-200 hover:bg-rose-600 transition shrink-0">
-              + Calendar
-            </a>
+        <!-- Location Card -->
+        <div class="bg-cyan-100/80 border-3 border-party-blue p-4 rounded-3xl flex items-center gap-4 shadow-sm hover:scale-[1.02] transition">
+          <div class="w-14 h-14 rounded-2xl bg-party-blue text-white shadow-md flex items-center justify-center text-2xl shrink-0 border-2 border-white">
+            📍
           </div>
-
-          <!-- Location Card -->
-          <div class="glass-pill-interactive p-4 rounded-3xl flex items-center gap-4">
-            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-ios-blue/20 to-ios-teal/20 text-ios-blue flex items-center justify-center text-2xl border border-ios-blue/20 shrink-0">
-              📍
-            </div>
-            <div class="flex-1 min-w-0">
-              <h3 class="font-display font-bold text-gray-900 text-base md:text-lg">704 Spring St</h3>
-              <p class="text-xs font-semibold text-gray-500">Seattle, WA 98104</p>
-            </div>
-            <a href="https://www.google.com/maps/search/?api=1&query=704+Spring+St+Seattle+WA+98104" target="_blank" class="px-3.5 py-2 bg-ios-blue text-white font-bold text-xs rounded-full shadow-sm shadow-blue-200 hover:bg-blue-600 transition shrink-0">
-              Directions
-            </a>
+          <div class="flex-1 min-w-0">
+            <h3 class="font-display font-extrabold text-party-blue text-lg">704 Spring St</h3>
+            <p class="text-xs font-bold text-gray-600">Seattle, WA 98104</p>
           </div>
-
+          <a href="https://www.google.com/maps/search/?api=1&query=704+Spring+St+Seattle+WA+98104" target="_blank" class="px-4 py-2 bg-party-blue hover:bg-cyan-600 text-white font-extrabold text-xs rounded-full shadow-md transition shrink-0">
+            Directions
+          </a>
         </div>
 
       </div>
+
     </div>
 
-    <!-- RSVP Section Glass Card -->
-    <section id="rsvp" class="glass-card-hero mt-6 p-[2px] bg-gradient-to-b from-white via-white/80 to-purple-200/50">
-      <div class="glass-card-inner p-6 md:p-8 relative overflow-hidden">
-        <div class="text-center mb-6">
-          <h2 class="font-display text-2xl md:text-3xl font-bold text-gray-900">
-            Kindly RSVP
-          </h2>
-          <p class="text-xs font-medium text-gray-500 mt-1">Please respond at your earliest convenience</p>
+    <!-- RSVP Section -->
+    <section id="rsvp" class="rainbow-card mt-8 p-6 md:p-8 relative overflow-hidden">
+      <div class="text-center mb-6">
+        <h2 class="font-display text-3xl md:text-4xl font-extrabold text-party-purple inline-flex items-center gap-2">
+          <span>🎈</span> Kindly RSVP <span>🥳</span>
+        </h2>
+        <p class="text-xs font-bold text-gray-500 mt-1">Please let us know if you can join the celebration!</p>
+      </div>
+
+      <form id="rsvpForm" class="space-y-4 text-left">
+        <div>
+          <label class="block text-xs font-extrabold text-gray-700 uppercase tracking-wider ml-1 mb-1">Your Full Name</label>
+          <input type="text" name="guest_name" class="w-full p-4 bg-gray-50 border-2 border-gray-200 rounded-2xl focus:bg-white focus:border-party-pink outline-none font-bold text-gray-900 transition shadow-inner" required placeholder="Aunt Sarah">
         </div>
 
-        <form id="rsvpForm" class="space-y-4 text-left">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider ml-1 mb-1.5">Your Full Name</label>
-            <input type="text" name="guest_name" class="w-full p-3.5 bg-white/90 border border-gray-200 rounded-2xl focus:bg-white focus:border-ios-blue outline-none font-semibold text-gray-900 transition shadow-sm focus:ring-4 focus:ring-blue-100" required placeholder="Aunt Sarah">
+            <label class="block text-xs font-extrabold text-gray-700 uppercase tracking-wider ml-1 mb-1">Will you attend?</label>
+            <select name="attendance" class="w-full p-4 bg-gray-50 border-2 border-gray-200 rounded-2xl focus:bg-white focus:border-party-pink outline-none font-bold text-gray-900 transition shadow-inner">
+              <option value="attending">Joyfully Accept 🎉</option>
+              <option value="declining">Regretfully Decline 💔</option>
+            </select>
           </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider ml-1 mb-1.5">Attendance</label>
-              <select name="attendance" class="w-full p-3.5 bg-white/90 border border-gray-200 rounded-2xl focus:bg-white focus:border-ios-blue outline-none font-semibold text-gray-900 transition shadow-sm focus:ring-4 focus:ring-blue-100">
-                <option value="attending">Joyfully Accept 🎉</option>
-                <option value="declining">Regretfully Decline 💔</option>
-              </select>
-            </div>
-            <div>
-              <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider ml-1 mb-1.5">Total Guests</label>
-              <input type="number" name="guest_count" min="1" max="10" value="1" class="w-full p-3.5 bg-white/90 border border-gray-200 rounded-2xl focus:bg-white focus:border-ios-blue outline-none font-semibold text-gray-900 transition shadow-sm focus:ring-4 focus:ring-blue-100">
-            </div>
-          </div>
-
           <div>
-            <label class="block text-xs font-bold text-gray-500 uppercase tracking-wider ml-1 mb-1.5">Wish for Ziya (Optional)</label>
-            <textarea name="message" rows="3" class="w-full p-3.5 bg-white/90 border border-gray-200 rounded-2xl focus:bg-white focus:border-ios-blue outline-none font-semibold text-gray-900 transition shadow-sm focus:ring-4 focus:ring-blue-100" placeholder="Can't wait to see the birthday girl!"></textarea>
+            <label class="block text-xs font-extrabold text-gray-700 uppercase tracking-wider ml-1 mb-1">Total Guests</label>
+            <input type="number" name="guest_count" min="1" max="10" value="1" class="w-full p-4 bg-gray-50 border-2 border-gray-200 rounded-2xl focus:bg-white focus:border-party-pink outline-none font-bold text-gray-900 transition shadow-inner">
           </div>
-
-          <button type="submit" id="submitBtn" class="w-full bg-gradient-to-r from-ios-blue via-ios-indigo to-ios-purple hover:opacity-95 active:scale-[0.98] text-white font-display font-bold text-lg py-4 rounded-2xl transition duration-200 shadow-xl shadow-indigo-200 cursor-pointer">
-            Send Response ✨
-          </button>
-        </form>
-
-        <div id="thankYouMsg" class="hidden text-center p-6 bg-ios-green/10 border border-ios-green/30 text-ios-green font-display font-bold text-lg rounded-2xl">
-          🎉 Yay! Your RSVP has been received. See you there!
         </div>
+
+        <div>
+          <label class="block text-xs font-extrabold text-gray-700 uppercase tracking-wider ml-1 mb-1">Wish for Ziya (Optional)</label>
+          <textarea name="message" rows="3" class="w-full p-4 bg-gray-50 border-2 border-gray-200 rounded-2xl focus:bg-white focus:border-party-pink outline-none font-bold text-gray-900 transition shadow-inner" placeholder="Can't wait to celebrate!"></textarea>
+        </div>
+
+        <button type="submit" id="submitBtn" class="w-full bg-gradient-to-r from-party-pink via-party-purple to-party-blue hover:opacity-95 active:scale-[0.98] text-white font-display font-black text-xl py-4 rounded-2xl transition duration-200 shadow-lg shadow-pink-300 cursor-pointer">
+          Send RSVP ✨
+        </button>
+      </form>
+
+      <div id="thankYouMsg" class="hidden text-center p-6 bg-emerald-100 border-2 border-emerald-400 text-emerald-900 font-display font-extrabold text-xl rounded-2xl">
+        🎉 Yay! Your RSVP has been received. See you at the party!
       </div>
     </section>
 
     <!-- Footer -->
-    <footer class="mt-6 text-center text-xs font-semibold text-gray-400">
+    <footer class="mt-8 text-center text-sm font-extrabold text-party-pink">
       Made with 💕 for Ziya's 1st Birthday
     </footer>
   </main>
@@ -284,15 +289,15 @@
       height = canvas.height = window.innerHeight;
     });
 
-    const particles = Array.from({ length: 40 }, () => ({
+    const particles = Array.from({ length: 45 }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
-      size: Math.random() * 7 + 4,
-      color: ['#ff2d55', '#ff9500', '#ffcc00', '#34c759', '#007aff', '#af52de'][Math.floor(Math.random() * 6)],
-      speedY: Math.random() * 1.2 + 0.4,
+      size: Math.random() * 8 + 4,
+      color: ['#ff3b75', '#ffc300', '#00bbf9', '#00f5d4', '#9b5de5', '#ff6b35'][Math.floor(Math.random() * 6)],
+      speedY: Math.random() * 1.5 + 0.5,
       speedX: Math.sin(Math.random() * Math.PI) - 0.5,
       rotation: Math.random() * 360,
-      rotationSpeed: Math.random() * 2 - 1
+      rotationSpeed: Math.random() * 3 - 1.5
     }));
 
     function renderConfetti() {
@@ -311,7 +316,7 @@
         ctx.translate(p.x, p.y);
         ctx.rotate((p.rotation * Math.PI) / 180);
         ctx.fillStyle = p.color;
-        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.6);
+        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.7);
         ctx.restore();
       });
       requestAnimationFrame(renderConfetti);
@@ -332,10 +337,10 @@
       submitBtn.innerText = 'Sending... ⏳';
 
       confetti({
-        particleCount: 180,
-        spread: 100,
+        particleCount: 200,
+        spread: 120,
         origin: { y: 0.6 },
-        colors: ['#ff2d55', '#ff9500', '#ffcc00', '#34c759', '#007aff', '#af52de']
+        colors: ['#ff3b75', '#ffc300', '#00bbf9', '#00f5d4', '#9b5de5', '#ff6b35']
       });
 
       const payload = new FormData(form);
@@ -353,7 +358,7 @@
       .catch(err => {
         alert("Something went wrong. Please try again!");
         submitBtn.disabled = false;
-        submitBtn.innerText = 'Send Response ✨';
+        submitBtn.innerText = 'Send RSVP ✨';
       });
     });
   </script>
