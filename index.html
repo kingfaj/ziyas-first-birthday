@@ -2,22 +2,34 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Ziya 1st Birthday - 1200x630 OG Image</title>
-  
-  <!-- Playful Google Fonts -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ziya is Turning 1! 🎂🎈🎉</title>
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Ziya is Turning 1! 🥳🎉">
+  <meta property="og:description" content="Join us for Ziya's 1st Birthday Celebration on Saturday, Aug 29, 2026! Click to RSVP.">
+  <meta property="og:image" content="https://raw.githubusercontent.com/kingfaj/ziyas-first-birthday/main/zbd.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts for Playful Baby Style -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Grandstander:wght@700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Grandstander:wght@600;700;800&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Canvas Confetti Library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
   <script>
     tailwind.config = {
       theme: {
         extend: {
           fontFamily: {
-            display: ['Grandstander', 'sans-serif'],
+            display: ['Grandstander', 'Fredoka', 'sans-serif'],
             sans: ['Fredoka', 'sans-serif'],
           },
           colors: {
@@ -34,74 +46,113 @@
   </script>
 
   <style>
-    .og-container {
-      width: 1200px;
-      height: 630px;
+    /* Bright & Cheerful Celebration Pattern Background */
+    body {
       background-color: #fffdf0;
       background-image: 
-        radial-gradient(#ff3b75 4px, transparent 4px),
-        radial-gradient(#00bbf9 4px, transparent 4px),
-        radial-gradient(#ffc300 4px, transparent 4px),
-        radial-gradient(#9b5de5 4px, transparent 4px);
-      background-size: 60px 60px, 70px 70px, 50px 50px, 80px 80px;
-      background-position: 0 0, 35px 35px, 20px 20px, 40px 40px;
+        radial-gradient(#ff3b75 3.5px, transparent 3.5px),
+        radial-gradient(#00bbf9 3.5px, transparent 3.5px),
+        radial-gradient(#ffc300 3.5px, transparent 3.5px),
+        radial-gradient(#9b5de5 3.5px, transparent 3.5px);
+      background-size: 50px 50px, 60px 60px, 40px 40px, 70px 70px;
+      background-position: 0 0, 25px 25px, 15px 15px, 35px 35px;
+      background-attachment: fixed;
     }
 
+    /* Vibrant Multi-Border Party Cards */
     .rainbow-card {
       background: #ffffff;
-      border-radius: 44px;
+      border-radius: 36px;
       position: relative;
-      box-shadow: 0 25px 50px -12px rgba(255, 59, 117, 0.3);
+      box-shadow: 
+        0 20px 40px -10px rgba(255, 59, 117, 0.25),
+        0 10px 20px -5px rgba(0, 187, 249, 0.2);
     }
 
     .rainbow-card::before {
       content: '';
       position: absolute;
-      inset: -8px;
-      border-radius: 52px;
+      inset: -6px;
+      border-radius: 42px;
       background: linear-gradient(135deg, #ff3b75, #ffc300, #00f5d4, #00bbf9, #9b5de5);
       z-index: -1;
+      animation: rainbowGlow 6s linear infinite;
+    }
+
+    @keyframes rainbowGlow {
+      0% { filter: hue-rotate(0deg); }
+      100% { filter: hue-rotate(360deg); }
+    }
+
+    /* Bouncy Animations */
+    @keyframes bounceGentle {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(2deg); }
+    }
+
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(-3deg); }
+      50% { transform: rotate(3deg); }
+    }
+
+    .animate-bounce-gentle {
+      animation: bounceGentle 3s ease-in-out infinite;
+    }
+
+    .animate-wiggle {
+      animation: wiggle 2s ease-in-out infinite;
+    }
+
+    #confettiCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
     }
   </style>
 </head>
-<body class="bg-gray-900 flex items-center justify-center min-h-screen p-4">
+<body class="text-gray-800 font-sans antialiased pb-12 relative min-h-screen overflow-x-hidden">
 
-  <div class="og-container relative overflow-hidden flex flex-col justify-between p-8 font-sans select-none shrink-0">
+  <!-- Interactive Floating Background Canvas -->
+  <canvas id="confettiCanvas"></canvas>
 
-    <!-- Top Banner -->
-    <div class="absolute top-0 left-0 right-0 w-full overflow-hidden leading-none z-10">
-      <svg class="w-full h-16" viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <polygon points="0,0 60,95 120,0" fill="#ff3b75"/>
-        <polygon points="120,0 180,95 240,0" fill="#ffc300"/>
-        <polygon points="240,0 300,95 360,0" fill="#00bbf9"/>
-        <polygon points="360,0 420,95 480,0" fill="#00f5d4"/>
-        <polygon points="480,0 540,95 600,0" fill="#9b5de5"/>
-        <polygon points="600,0 660,95 720,0" fill="#ff6b35"/>
-        <polygon points="720,0 780,95 840,0" fill="#ff3b75"/>
-        <polygon points="840,0 900,95 960,0" fill="#ffc300"/>
-        <polygon points="960,0 1020,95 1080,0" fill="#00bbf9"/>
-        <polygon points="1080,0 1140,95 1200,0" fill="#00f5d4"/>
-      </svg>
-    </div>
+  <!-- Festive Bunting Streamer Top Banner -->
+  <div class="w-full overflow-hidden leading-none relative z-10 opacity-95">
+    <svg class="w-full h-14 md:h-20" viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <polygon points="0,0 60,95 120,0" fill="#ff3b75"/>
+      <polygon points="120,0 180,95 240,0" fill="#ffc300"/>
+      <polygon points="240,0 300,95 360,0" fill="#00bbf9"/>
+      <polygon points="360,0 420,95 480,0" fill="#00f5d4"/>
+      <polygon points="480,0 540,95 600,0" fill="#9b5de5"/>
+      <polygon points="600,0 660,95 720,0" fill="#ff6b35"/>
+      <polygon points="720,0 780,95 840,0" fill="#ff3b75"/>
+      <polygon points="840,0 900,95 960,0" fill="#ffc300"/>
+      <polygon points="960,0 1020,95 1080,0" fill="#00bbf9"/>
+      <polygon points="1080,0 1140,95 1200,0" fill="#00f5d4"/>
+    </svg>
+  </div>
 
-    <!-- Background Emojis -->
-    <div class="absolute top-20 left-10 text-5xl">🎁</div>
-    <div class="absolute top-20 right-10 text-5xl">🎂</div>
-    <div class="absolute bottom-8 left-12 text-5xl">✨</div>
-    <div class="absolute bottom-8 right-12 text-5xl">🎉</div>
+  <main class="max-w-xl mx-auto px-4 pt-4 relative z-10">
+    
+    <!-- Hero Card -->
+    <div class="rainbow-card p-6 md:p-10 text-center relative overflow-hidden">
 
-    <!-- Main Card -->
-    <div class="rainbow-card mt-6 p-6 flex flex-col justify-center items-center text-center relative z-20 h-full">
+      <!-- Playful Floating Emojis in Hero Card Corner -->
+      <div class="absolute top-4 left-4 text-3xl animate-bounce-gentle">🎁</div>
+      <div class="absolute top-4 right-4 text-3xl animate-bounce-gentle" style="animation-delay: 0.5s;">🎂</div>
 
       <!-- 5-Balloon Cluster Graphic -->
-      <div class="mb-1">
-        <svg class="w-56 h-36" viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <div class="flex justify-center items-center mb-2 relative animate-bounce-gentle">
+        <svg class="w-56 h-40" viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg">
           <!-- Strings -->
-          <path d="M100 85 Q 95 110 90 135" stroke="#ff3b75" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-          <path d="M72 75 Q 80 105 85 135" stroke="#00bbf9" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-          <path d="M128 75 Q 120 105 115 135" stroke="#9b5de5" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-          <path d="M45 80 Q 65 110 82 135" stroke="#00f5d4" stroke-width="2" stroke-linecap="round" fill="none"/>
-          <path d="M155 80 Q 135 110 118 135" stroke="#ffc300" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <path d="M100 85 Q 95 110 90 135" stroke="#ff3b75" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <path d="M72 75 Q 80 105 85 135" stroke="#00bbf9" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <path d="M128 75 Q 120 105 115 135" stroke="#9b5de5" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <path d="M45 80 Q 65 110 82 135" stroke="#00f5d4" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          <path d="M155 80 Q 135 110 118 135" stroke="#ffc300" stroke-width="1.8" stroke-linecap="round" fill="none"/>
 
           <!-- Far Left Balloon (Green) -->
           <ellipse cx="38" cy="58" rx="18" ry="23" fill="#00f5d4"/>
@@ -128,71 +179,239 @@
           <ellipse cx="92" cy="28" rx="7" ry="11" fill="#ffffff" opacity="0.6"/>
           <polygon points="100,71 95,77 105,77" fill="#ff3b75"/>
 
-          <!-- Bow -->
-          <circle cx="100" cy="135" r="5" fill="#ffc300"/>
+          <!-- Ribbon Bow -->
+          <circle cx="100" cy="135" r="4" fill="#ffc300"/>
         </svg>
       </div>
 
-      <!-- Tagline Pill -->
-      <div class="inline-block bg-gradient-to-r from-party-yellow via-party-orange to-party-pink px-8 py-1.5 rounded-full mb-2 shadow-md transform -rotate-1">
-        <span class="font-display font-black text-base text-white tracking-wide uppercase drop-shadow-sm">
+      <!-- Invitation Badge Pill -->
+      <div class="inline-block bg-gradient-to-r from-party-yellow via-party-orange to-party-pink px-6 py-2 rounded-full mb-3 shadow-md transform -rotate-1 animate-wiggle">
+        <span class="font-display font-extrabold text-sm md:text-base text-white tracking-wide uppercase drop-shadow-sm">
           🎈 You're Invited to Ziya's Party! 🎉
         </span>
       </div>
 
-      <!-- Main Headline with Graphic "1" -->
-      <div class="flex items-center justify-center gap-3 my-1">
-        <h1 class="font-display text-5xl font-black text-party-pink leading-none tracking-tight">
+      <!-- Main Headline with Gold Foil Balloon "1" -->
+      <div class="flex items-center justify-center gap-2 md:gap-3 my-1">
+        <h1 class="font-display text-3xl sm:text-4xl md:text-5xl font-black text-party-pink leading-tight tracking-wide drop-shadow-sm">
           Ziya is Turning
         </h1>
 
-        <!-- Cute 3D Graphic "1" with Party Hat -->
-        <div class="relative inline-block ml-1">
-          <svg class="w-20 h-24 overflow-visible" viewBox="0 0 70 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Party Hat on Top of 1 -->
-            <polygon points="38,0 20,28 52,24" fill="#ffc300"/>
-            <circle cx="38" cy="0" r="4" fill="#ff3b75"/>
-            <path d="M22 23 L48 20" stroke="#00bbf9" stroke-width="2.5" stroke-dasharray="3 3"/>
+        <!-- Realistic Foil Balloon "1" Graphic -->
+        <div class="relative inline-block shrink-0">
+          <svg class="w-14 h-20 md:w-16 md:h-24 filter drop-shadow-md" viewBox="0 0 60 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <!-- Foil Balloon Gold Gradient -->
+              <linearGradient id="goldBalloon" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#fff3b0"/>
+                <stop offset="25%" stop-color="#ffd700"/>
+                <stop offset="60%" stop-color="#ffae00"/>
+                <stop offset="85%" stop-color="#e67e22"/>
+                <stop offset="100%" stop-color="#d35400"/>
+              </linearGradient>
 
-            <!-- Cute Bubble "1" Body -->
-            <path d="M28 32 L38 25 C42 22 48 25 48 30 L48 80 C48 84 44 88 38 88 L28 88 C22 88 18 84 18 80 L18 78 L32 78 L32 40 L24 45 C20 48 15 45 15 40 C15 36 20 33 28 32 Z" fill="#9b5de5"/>
-            <!-- Inner Highlight -->
-            <path d="M34 38 L34 76" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+              <!-- Shiny Reflection Overlay -->
+              <linearGradient id="goldShine" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.8"/>
+                <stop offset="50%" stop-color="#ffffff" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+
+            <!-- Balloon Tie / Knot Base -->
+            <polygon points="30,82 25,88 35,88" fill="#d35400"/>
+            <ellipse cx="30" cy="82" rx="4" ry="2" fill="#e67e22"/>
+
+            <!-- Main Inflated Foil "1" Body -->
+            <path d="M22 28 L32 20 C36 17 44 20 44 26 L44 74 C44 79 39 82 32 82 L26 82 C20 82 16 78 16 73 L16 70 L28 70 L28 36 L20 41 C16 43 12 40 12 36 C12 32 16 29 22 28 Z" 
+                  fill="url(#goldBalloon)" 
+                  stroke="#b7950b" 
+                  stroke-width="1.5" 
+                  stroke-linejoin="round"/>
+
+            <!-- Inner Shiny Crease Highlights -->
+            <path d="M30 24 L30 76" stroke="url(#goldShine)" stroke-width="3.5" stroke-linecap="round"/>
+            <path d="M20 32 L26 28" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.8"/>
           </svg>
         </div>
       </div>
 
-      <p class="text-gray-700 font-bold text-xl mt-1">
+      <p class="text-gray-700 font-bold text-base md:text-xl mt-3 max-w-sm mx-auto">
         One year of sweet smiles & tiny steps! Join us for cake, playtime & fun! 🧁
       </p>
 
-      <!-- Event Details Bar -->
-      <div class="mt-5 flex items-center justify-center gap-6 w-full max-w-2xl">
-        <div class="flex-1 bg-amber-100/90 border-3 border-party-yellow p-3 rounded-2xl flex items-center gap-4 shadow-sm">
-          <div class="w-12 h-12 rounded-xl bg-party-yellow text-gray-900 flex flex-col items-center justify-center shrink-0 border border-white">
-            <span class="text-[9px] font-black uppercase text-party-orange leading-none">AUG</span>
-            <span class="font-display text-xl font-black leading-none mt-0.5">29</span>
+      <!-- Event Details Cards -->
+      <div class="mt-8 space-y-4 text-left">
+        
+        <!-- Date Card -->
+        <div class="bg-amber-100/80 border-3 border-party-yellow p-4 rounded-3xl flex items-center gap-4 shadow-sm hover:scale-[1.02] transition">
+          <div class="w-14 h-14 rounded-2xl bg-party-yellow text-gray-900 shadow-md flex flex-col items-center justify-center shrink-0 border-2 border-white">
+            <div class="text-[10px] font-black uppercase tracking-wider text-party-orange">AUG</div>
+            <span class="font-display text-2xl font-black leading-none">29</span>
           </div>
-          <div class="text-left">
-            <p class="font-display font-extrabold text-party-orange text-lg leading-tight">Sat, August 29, 2026</p>
+
+          <div class="flex-1 min-w-0">
+            <h3 class="font-display font-extrabold text-party-orange text-lg">Saturday, August 29</h3>
             <p class="text-xs font-bold text-gray-600">4:00 PM Onwards</p>
           </div>
+          
+          <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Ziya%27s+1st+Birthday+Party&dates=20260829T230000Z/20260830T020000Z&details=Join+us+in+celebrating+Ziya%27s+first+birthday!&location=704+Spring+St,+Seattle,+WA+98104" target="_blank" class="px-4 py-2 bg-party-orange hover:bg-orange-600 text-white font-extrabold text-xs rounded-full shadow-md transition shrink-0">
+            + Calendar
+          </a>
         </div>
 
-        <div class="flex-1 bg-cyan-100/90 border-3 border-party-blue p-3 rounded-2xl flex items-center gap-4 shadow-sm">
-          <div class="w-12 h-12 rounded-xl bg-party-blue text-white flex items-center justify-center text-xl shrink-0 border border-white">
+        <!-- Location Card -->
+        <div class="bg-cyan-100/80 border-3 border-party-blue p-4 rounded-3xl flex items-center gap-4 shadow-sm hover:scale-[1.02] transition">
+          <div class="w-14 h-14 rounded-2xl bg-party-blue text-white shadow-md flex items-center justify-center text-2xl shrink-0 border-2 border-white">
             📍
           </div>
-          <div class="text-left">
-            <p class="font-display font-extrabold text-party-blue text-lg leading-tight">704 Spring St</p>
+          <div class="flex-1 min-w-0">
+            <h3 class="font-display font-extrabold text-party-blue text-lg">704 Spring St</h3>
             <p class="text-xs font-bold text-gray-600">Seattle, WA 98104</p>
           </div>
+          <a href="https://www.google.com/maps/search/?api=1&query=704+Spring+St+Seattle+WA+98104" target="_blank" class="px-4 py-2 bg-party-blue hover:bg-cyan-600 text-white font-extrabold text-xs rounded-full shadow-md transition shrink-0">
+            Directions
+          </a>
         </div>
+
       </div>
 
     </div>
 
-  </div>
+    <!-- RSVP Section -->
+    <section id="rsvp" class="rainbow-card mt-8 p-6 md:p-8 relative overflow-hidden">
+      <div class="text-center mb-6">
+        <h2 class="font-display text-3xl md:text-4xl font-extrabold text-party-purple inline-flex items-center gap-2">
+          <span>🎈</span> Kindly RSVP <span>🥳</span>
+        </h2>
+        <p class="text-xs font-bold text-gray-500 mt-1">Please let us know if you can join the celebration!</p>
+      </div>
 
+      <form id="rsvpForm" class="space-y-4 text-left">
+        <div>
+          <label class="block text-xs font-extrabold text-gray-700 uppercase tracking-wider ml-1 mb-1">Your Full Name</label>
+          <input type="text" name="guest_name" class="w-full p-4 bg-gray-50 border-2 border-gray-200 rounded-2xl focus:bg-white focus:border-party-pink outline-none font-bold text-gray-900 transition shadow-inner" required placeholder="Aunt Sarah">
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-extrabold text-gray-700 uppercase tracking-wider ml-1 mb-1">Will you attend?</label>
+            <select name="attendance" class="w-full p-4 bg-gray-50 border-2 border-gray-200 rounded-2xl focus:bg-white focus:border-party-pink outline-none font-bold text-gray-900 transition shadow-inner">
+              <option value="attending">Joyfully Accept 🎉</option>
+              <option value="declining">Regretfully Decline 💔</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-extrabold text-gray-700 uppercase tracking-wider ml-1 mb-1">Total Guests</label>
+            <input type="number" name="guest_count" min="1" max="10" value="1" class="w-full p-4 bg-gray-50 border-2 border-gray-200 rounded-2xl focus:bg-white focus:border-party-pink outline-none font-bold text-gray-900 transition shadow-inner">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-extrabold text-gray-700 uppercase tracking-wider ml-1 mb-1">Wish for Ziya (Optional)</label>
+          <textarea name="message" rows="3" class="w-full p-4 bg-gray-50 border-2 border-gray-200 rounded-2xl focus:bg-white focus:border-party-pink outline-none font-bold text-gray-900 transition shadow-inner" placeholder="Can't wait to celebrate!"></textarea>
+        </div>
+
+        <button type="submit" id="submitBtn" class="w-full bg-gradient-to-r from-party-pink via-party-purple to-party-blue hover:opacity-95 active:scale-[0.98] text-white font-display font-black text-xl py-4 rounded-2xl transition duration-200 shadow-lg shadow-pink-300 cursor-pointer">
+          Send RSVP ✨
+        </button>
+      </form>
+
+      <div id="thankYouMsg" class="hidden text-center p-6 bg-emerald-100 border-2 border-emerald-400 text-emerald-900 font-display font-extrabold text-xl rounded-2xl">
+        🎉 Yay! Your RSVP has been received. See you at the party!
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-8 text-center text-sm font-extrabold text-party-pink">
+      Made with 💕 for Ziya's 1st Birthday
+    </footer>
+  </main>
+
+  <!-- Canvas Drifting Confetti & RSVP Explosion Script -->
+  <script>
+    const canvas = document.getElementById('confettiCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    });
+
+    const particles = Array.from({ length: 45 }, () => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      size: Math.random() * 8 + 4,
+      color: ['#ff3b75', '#ffc300', '#00bbf9', '#00f5d4', '#9b5de5', '#ff6b35'][Math.floor(Math.random() * 6)],
+      speedY: Math.random() * 1.5 + 0.5,
+      speedX: Math.sin(Math.random() * Math.PI) - 0.5,
+      rotation: Math.random() * 360,
+      rotationSpeed: Math.random() * 3 - 1.5
+    }));
+
+    function renderConfetti() {
+      ctx.clearRect(0, 0, width, height);
+      particles.forEach(p => {
+        p.y += p.speedY;
+        p.x += p.speedX;
+        p.rotation += p.rotationSpeed;
+
+        if (p.y > height) {
+          p.y = -10;
+          p.x = Math.random() * width;
+        }
+
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate((p.rotation * Math.PI) / 180);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.7);
+        ctx.restore();
+      });
+      requestAnimationFrame(renderConfetti);
+    }
+    renderConfetti();
+
+    /* Form RSVP Script */
+    const form = document.getElementById('rsvpForm');
+    const thankYouMsg = document.getElementById('thankYouMsg');
+    const submitBtn = document.getElementById('submitBtn');
+    
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzcCksKC6Ej3k1EYri8M-bFXJzlbCU10X-Rc-AgzqbRT0uPProMT_xt0Y_uTHU7B_FV/exec';
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      submitBtn.disabled = true;
+      submitBtn.innerText = 'Sending... ⏳';
+
+      confetti({
+        particleCount: 200,
+        spread: 120,
+        origin: { y: 0.6 },
+        colors: ['#ff3b75', '#ffc300', '#00bbf9', '#00f5d4', '#9b5de5', '#ff6b35']
+      });
+
+      const payload = new FormData(form);
+
+      fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: payload
+      })
+      .then(() => {
+        form.reset();
+        form.classList.add('hidden');
+        thankYouMsg.classList.remove('hidden');
+      })
+      .catch(err => {
+        alert("Something went wrong. Please try again!");
+        submitBtn.disabled = false;
+        submitBtn.innerText = 'Send RSVP ✨';
+      });
+    });
+  </script>
 </body>
 </html>
