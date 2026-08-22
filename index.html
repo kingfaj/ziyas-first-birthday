@@ -16,7 +16,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Grandstander:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Grandstander:wght@700;800;900&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -164,62 +164,19 @@
         </svg>
       </div>
 
-      <!-- Headline: Line 1 Text, Line 2 Centered Balloon "1" -->
-      <div class="flex flex-col items-center justify-center mt-1 mb-3">
+      <!-- Headline: Line 1 Text, Line 2 Dynamic Confetti "1" -->
+      <div class="flex flex-col items-center justify-center mt-1 mb-2">
         <h1 class="font-display text-3xl sm:text-4xl md:text-5xl font-black text-party-pink leading-tight tracking-wide uppercase drop-shadow-sm">
           Ziya is Turning
         </h1>
 
-        <!-- Plump, Symmetrical 3D Gold Foil Balloon "1" -->
-        <div class="mt-3 relative inline-flex items-center justify-center">
-          <svg class="w-28 h-36 md:w-32 md:h-40 filter drop-shadow-xl" viewBox="0 0 120 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="goldFoilGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#fffde6"/>
-                <stop offset="25%" stop-color="#ffdf00"/>
-                <stop offset="55%" stop-color="#f39c12"/>
-                <stop offset="85%" stop-color="#d35400"/>
-                <stop offset="100%" stop-color="#8e3a00"/>
-              </linearGradient>
-
-              <linearGradient id="foilGleam" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.85"/>
-                <stop offset="70%" stop-color="#ffffff" stop-opacity="0"/>
-              </linearGradient>
-            </defs>
-
-            <!-- Symmetrical Balloon Base Knot and Ribbon -->
-            <path d="M 52 130 C 52 135, 68 135, 68 130 L 72 138 C 72 141, 48 141, 48 138 Z" fill="#a04000"/>
-            <ellipse cx="60" cy="130" rx="9" ry="4" fill="#f39c12"/>
-
-            <!-- Round, Plump, Symmetrical Inflatable Foil "1" Path -->
-            <path d="M 52 18 
-                     C 52 18, 34 30, 28 35 
-                     C 20 42, 25 52, 35 50 
-                     L 44 47 
-                     L 44 110 
-                     C 44 110, 30 110, 24 110 
-                     C 16 110, 16 124, 24 124 
-                     L 96 124 
-                     C 104 124, 104 110, 96 110 
-                     C 90 110, 76 110, 76 110 
-                     L 76 30 
-                     C 76 18, 64 12, 52 18 Z" 
-                  fill="url(#goldFoilGrad)" 
-                  stroke="#8e3a00" 
-                  stroke-width="3" 
-                  stroke-linejoin="round"
-                  stroke-linecap="round"/>
-
-            <!-- Soft Curved Metallic Reflections for 3D Puff Effect -->
-            <path d="M 52 24 C 52 24, 38 33, 34 37" stroke="url(#foilGleam)" stroke-width="5" stroke-linecap="round"/>
-            <path d="M 52 30 L 52 114" stroke="url(#foilGleam)" stroke-width="6" stroke-linecap="round"/>
-            <path d="M 28 116 L 92 116" stroke="url(#foilGleam)" stroke-width="4" stroke-linecap="round" opacity="0.7"/>
-          </svg>
+        <!-- Confetti Assembly Canvas for "1" -->
+        <div class="relative flex items-center justify-center my-1">
+          <canvas id="numberCanvas" width="220" height="180" class="max-w-full h-auto"></canvas>
         </div>
       </div>
 
-      <p class="text-gray-700 font-bold text-base md:text-xl mt-2 max-w-sm mx-auto">
+      <p class="text-gray-700 font-bold text-base md:text-xl mt-1 max-w-sm mx-auto">
         One year of sweet smiles & tiny steps! Join us for cake, playtime & fun! 🧁
       </p>
 
@@ -312,6 +269,164 @@
   </main>
 
   <script>
+    // --- Confetti Assembly Animation for "1" ---
+    const numCanvas = document.getElementById('numberCanvas');
+    const nCtx = numCanvas.getContext('2d');
+    const W = numCanvas.width;
+    const H = numCanvas.height;
+
+    const partyColors = ['#ff3b75', '#ffc300', '#00bbf9', '#9b5de5', '#00f5d4', '#ff6b35'];
+
+    function getTargetPoints() {
+      const offCanvas = document.createElement('canvas');
+      offCanvas.width = W;
+      offCanvas.height = H;
+      const offCtx = offCanvas.getContext('2d');
+
+      offCtx.font = '900 150px Grandstander, Fredoka, sans-serif';
+      offCtx.fillStyle = '#000';
+      offCtx.textAlign = 'center';
+      offCtx.textBaseline = 'middle';
+      offCtx.fillText('1', W / 2, H / 2 + 10);
+
+      const imgData = offCtx.getImageData(0, 0, W, H).data;
+      const points = [];
+      const step = 6; // Grid density
+
+      for (let y = 0; y < H; y += step) {
+        for (let x = 0; x < W; x += step) {
+          const alpha = imgData[(y * W + x) * 4 + 3];
+          if (alpha > 128) {
+            points.push({ x, y });
+          }
+        }
+      }
+      return points;
+    }
+
+    let particles = [];
+    let state = 'assembling'; // 'assembling', 'holding', 'dispersing', 'waiting'
+    let stateTimer = 0;
+
+    function initNumberAnimation() {
+      const targets = getTargetPoints();
+      particles = targets.map(target => {
+        const startAngle = Math.random() * Math.PI * 2;
+        const startDist = Math.random() * 150 + 100;
+        return {
+          x: W / 2 + Math.cos(startAngle) * startDist,
+          y: H / 2 + Math.sin(startAngle) * startDist,
+          targetX: target.x,
+          targetY: target.y,
+          vx: 0,
+          vy: 0,
+          size: Math.random() * 4 + 4,
+          color: partyColors[Math.floor(Math.random() * partyColors.length)],
+          rotation: Math.random() * 360,
+          rotSpeed: Math.random() * 4 - 2,
+          shape: Math.random() > 0.4 ? 'rect' : 'circle'
+        };
+      });
+      state = 'assembling';
+      stateTimer = 0;
+    }
+
+    function resetParticleTargets() {
+      particles.forEach(p => {
+        const startAngle = Math.random() * Math.PI * 2;
+        const startDist = Math.random() * 150 + 100;
+        p.x = W / 2 + Math.cos(startAngle) * startDist;
+        p.y = H / 2 + Math.sin(startAngle) * startDist;
+        p.vx = 0;
+        p.vy = 0;
+      });
+    }
+
+    function animateNumber() {
+      nCtx.clearRect(0, 0, W, H);
+      stateTimer++;
+
+      if (state === 'assembling') {
+        let reachedCount = 0;
+        particles.forEach(p => {
+          const dx = p.targetX - p.x;
+          const dy = p.targetY - p.y;
+          p.x += dx * 0.08;
+          p.y += dy * 0.08;
+          p.rotation += p.rotSpeed;
+
+          if (Math.hypot(dx, dy) < 2) reachedCount++;
+        });
+
+        if (reachedCount > particles.length * 0.85 || stateTimer > 100) {
+          state = 'holding';
+          stateTimer = 0;
+        }
+      } 
+      else if (state === 'holding') {
+        particles.forEach(p => {
+          p.x += Math.sin(stateTimer * 0.1 + p.targetX) * 0.3;
+          p.y += Math.cos(stateTimer * 0.1 + p.targetY) * 0.3;
+          p.rotation += p.rotSpeed * 0.3;
+        });
+
+        if (stateTimer > 90) { // Hold for ~1.5s
+          state = 'dispersing';
+          stateTimer = 0;
+          particles.forEach(p => {
+            const angle = Math.random() * Math.PI * 2;
+            const speed = Math.random() * 8 + 4;
+            p.vx = Math.cos(angle) * speed;
+            p.vy = Math.sin(angle) * speed;
+          });
+        }
+      } 
+      else if (state === 'dispersing') {
+        particles.forEach(p => {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.rotation += p.rotSpeed * 2;
+        });
+
+        if (stateTimer > 35) { // Burst duration
+          state = 'waiting';
+          stateTimer = 0;
+        }
+      } 
+      else if (state === 'waiting') {
+        if (stateTimer > 20) { // Short pause before re-assembling
+          resetParticleTargets();
+          state = 'assembling';
+          stateTimer = 0;
+        }
+      }
+
+      // Draw Particles
+      particles.forEach(p => {
+        nCtx.save();
+        nCtx.translate(p.x, p.y);
+        nCtx.rotate((p.rotation * Math.PI) / 180);
+        nCtx.fillStyle = p.color;
+
+        if (p.shape === 'rect') {
+          nCtx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.7);
+        } else {
+          nCtx.beginPath();
+          nCtx.arc(0, 0, p.size / 2, 0, Math.PI * 2);
+          nCtx.fill();
+        }
+        nCtx.restore();
+      });
+
+      requestAnimationFrame(animateNumber);
+    }
+
+    document.fonts.ready.then(() => {
+      initNumberAnimation();
+      animateNumber();
+    });
+
+    // --- Floating Background Canvas ---
     const canvas = document.getElementById('confettiCanvas');
     const ctx = canvas.getContext('2d');
     
@@ -323,20 +438,20 @@
       height = canvas.height = window.innerHeight;
     });
 
-    const particles = Array.from({ length: 45 }, () => ({
+    const bgParticles = Array.from({ length: 45 }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
       size: Math.random() * 8 + 4,
-      color: ['#ff3b75', '#ffc300', '#00bbf9', '#00f5d4', '#9b5de5', '#ff6b35'][Math.floor(Math.random() * 6)],
+      color: partyColors[Math.floor(Math.random() * partyColors.length)],
       speedY: Math.random() * 1.5 + 0.5,
       speedX: Math.sin(Math.random() * Math.PI) - 0.5,
       rotation: Math.random() * 360,
       rotationSpeed: Math.random() * 3 - 1.5
     }));
 
-    function renderConfetti() {
+    function renderBackgroundConfetti() {
       ctx.clearRect(0, 0, width, height);
-      particles.forEach(p => {
+      bgParticles.forEach(p => {
         p.y += p.speedY;
         p.x += p.speedX;
         p.rotation += p.rotationSpeed;
@@ -353,10 +468,11 @@
         ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.7);
         ctx.restore();
       });
-      requestAnimationFrame(renderConfetti);
+      requestAnimationFrame(renderBackgroundConfetti);
     }
-    renderConfetti();
+    renderBackgroundConfetti();
 
+    // --- RSVP Form Handler ---
     const form = document.getElementById('rsvpForm');
     const thankYouMsg = document.getElementById('thankYouMsg');
     const submitBtn = document.getElementById('submitBtn');
@@ -373,7 +489,7 @@
         particleCount: 200,
         spread: 120,
         origin: { y: 0.6 },
-        colors: ['#ff3b75', '#ffc300', '#00bbf9', '#00f5d4', '#9b5de5', '#ff6b35']
+        colors: partyColors
       });
 
       const payload = new FormData(form);
