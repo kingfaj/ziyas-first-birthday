@@ -164,7 +164,7 @@
         </svg>
       </div>
 
-      <!-- Headline: Line 1 Text, Line 2 Dynamic Confetti "1" -->
+      <!-- Headline: Line 1 Text, Line 2 Dense Confetti "1" -->
       <div class="flex flex-col items-center justify-center mt-1 mb-2">
         <h1 class="font-display text-3xl sm:text-4xl md:text-5xl font-black text-party-pink leading-tight tracking-wide uppercase drop-shadow-sm">
           Ziya is Turning
@@ -269,7 +269,7 @@
   </main>
 
   <script>
-    // --- Confetti Assembly Animation for "1" ---
+    // --- Dense Confetti Assembly Animation for "1" ---
     const numCanvas = document.getElementById('numberCanvas');
     const nCtx = numCanvas.getContext('2d');
     const W = numCanvas.width;
@@ -291,7 +291,7 @@
 
       const imgData = offCtx.getImageData(0, 0, W, H).data;
       const points = [];
-      const step = 6; // Grid density
+      const step = 3; // Ultra-dense grid sampling to eliminate gaps
 
       for (let y = 0; y < H; y += step) {
         for (let x = 0; x < W; x += step) {
@@ -312,7 +312,7 @@
       const targets = getTargetPoints();
       particles = targets.map(target => {
         const startAngle = Math.random() * Math.PI * 2;
-        const startDist = Math.random() * 150 + 100;
+        const startDist = Math.random() * 160 + 110;
         return {
           x: W / 2 + Math.cos(startAngle) * startDist,
           y: H / 2 + Math.sin(startAngle) * startDist,
@@ -320,11 +320,11 @@
           targetY: target.y,
           vx: 0,
           vy: 0,
-          size: Math.random() * 4 + 4,
+          size: Math.random() * 3 + 5, // Slightly larger particles for seamless coverage
           color: partyColors[Math.floor(Math.random() * partyColors.length)],
           rotation: Math.random() * 360,
           rotSpeed: Math.random() * 4 - 2,
-          shape: Math.random() > 0.4 ? 'rect' : 'circle'
+          shape: Math.random() > 0.35 ? 'rect' : 'circle'
         };
       });
       state = 'assembling';
@@ -334,7 +334,7 @@
     function resetParticleTargets() {
       particles.forEach(p => {
         const startAngle = Math.random() * Math.PI * 2;
-        const startDist = Math.random() * 150 + 100;
+        const startDist = Math.random() * 160 + 110;
         p.x = W / 2 + Math.cos(startAngle) * startDist;
         p.y = H / 2 + Math.sin(startAngle) * startDist;
         p.vx = 0;
@@ -355,19 +355,19 @@
           p.y += dy * 0.08;
           p.rotation += p.rotSpeed;
 
-          if (Math.hypot(dx, dy) < 2) reachedCount++;
+          if (Math.hypot(dx, dy) < 1.5) reachedCount++;
         });
 
-        if (reachedCount > particles.length * 0.85 || stateTimer > 100) {
+        if (reachedCount > particles.length * 0.88 || stateTimer > 100) {
           state = 'holding';
           stateTimer = 0;
         }
       } 
       else if (state === 'holding') {
         particles.forEach(p => {
-          p.x += Math.sin(stateTimer * 0.1 + p.targetX) * 0.3;
-          p.y += Math.cos(stateTimer * 0.1 + p.targetY) * 0.3;
-          p.rotation += p.rotSpeed * 0.3;
+          p.x += Math.sin(stateTimer * 0.08 + p.targetX) * 0.2;
+          p.y += Math.cos(stateTimer * 0.08 + p.targetY) * 0.2;
+          p.rotation += p.rotSpeed * 0.2;
         });
 
         if (stateTimer > 90) { // Hold for ~1.5s
@@ -409,7 +409,7 @@
         nCtx.fillStyle = p.color;
 
         if (p.shape === 'rect') {
-          nCtx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.7);
+          nCtx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.85);
         } else {
           nCtx.beginPath();
           nCtx.arc(0, 0, p.size / 2, 0, Math.PI * 2);
